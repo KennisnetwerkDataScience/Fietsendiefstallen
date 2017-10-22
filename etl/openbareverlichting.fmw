@@ -5,56 +5,56 @@
 #    Command-line to run this workspace:
 #    
 #    
-#    D:\apps\FME\fme.exe "Z:\1. Anwar\AIConsultancy\Datascience Noord NL\Fme\Openbare verlichting.fmw"
-#          --SourceDataset_CSV2 "Z:\1. Anwar\AIConsultancy\Datascience Noord NL\DataIn\OVL groningen.csv"
-#          --DestDataset_ESRISHAPE "Z:\1. Anwar\AIConsultancy\Datascience Noord NL\DataUit\Openbareverlichting.shp"
+#    E:\FME2017\fme.exe C:\temp\etl\openbareverlichting.fmw
+#          --SourceDataset_CSV2 "https://ckan.dataplatform.nl/dataset/8b24358e-40ec-47fc-9d08-6fe121eaff37/resource/505507df-4b22-4d31-9f84-3ed57882457a/download/groningen.csv"
+#          --DestDataset_ESRISHAPE "..\data\openbareverlichting.zip"
 #    
 #    
-#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
-#!   FME_GEOMETRY_HANDLING="Enhanced"
-#!   TITLE=""
-#!   SOURCE="NONE"
-#!   PYTHON_COMPATIBILITY="27"
-#!   CATEGORY=""
-#!   LOG_MAX_RECORDED_FEATURES="200"
-#!   USE_MARKDOWN=""
-#!   FME_BUILD_NUM="17271"
-#!   LAST_SAVE_DATE="2017-10-06T16:11:51"
-#!   EXPLICIT_BOOKMARK_ORDER="false"
-#!   END_TCL=""
-#!   ZOOM_SCALE="100"
-#!   VIEW_POSITION="-1360.01 210.002"
-#!   HISTORY=""
 #!   WORKSPACE_VERSION="1"
-#!   DESTINATION_ROUTING_FILE=""
-#!   MAX_LOG_FEATURES="200"
-#!   PASSWORD=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   LAST_SAVE_DATE="2017-10-22T17:33:55"
+#!   END_TCL=""
 #!   DESCRIPTION=""
-#!   FME_REPROJECTION_ENGINE="FME"
-#!   FME_DOCUMENT_PRIORGUID="070a9e31-e136-40e3-8b2f-57e796402fb0,63f0448c-b2a4-4484-896a-4188c8207cfd,53ecdb02-5281-4886-9568-09b728ff58ed,9a243dd3-f7f6-429d-8813-da502012e235,b823ffd6-c25c-488d-bd88-8945a1403624,d4cd2c1c-1fab-488f-9153-f2bd56c0fbdd,c1c924f8-bba4-4810-bb1a-eb052b5af200"
-#!   LOG_FILE=""
-#!   SHOW_INFO_NODES="true"
-#!   LAST_SAVE_BUILD="FME(R) 2017.0.0.1 (20170316 - Build 17271 - WIN32)"
 #!   BEGIN_PYTHON=""
-#!   END_PYTHON=""
-#!   FME_DOCUMENT_GUID="a2e2e84b-a0d9-4709-a63d-655ccd2c1df2"
-#!   DESTINATION="NONE"
+#!   FME_DOCUMENT_GUID="c8cd021c-3e58-4bc5-ad6b-e9232920efe5"
 #!   ATTR_TYPE_ENCODING="SDF"
-#!   SOURCE_ROUTING_FILE=""
-#!   USAGE=""
-#!   FME_SERVER_SERVICES=""
-#!   IGNORE_READER_FAILURE="No"
-#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
-#!   DOC_TOP_LEFT="-1326.26 -467.502"
-#!   FME_STROKE_MAX_DEVIATION="0"
-#!   MARKDOWN_USAGE=""
-#!   DOC_EXTENTS="2517.78 677.504"
+#!   VIEW_POSITION="-1353.14 206.252"
+#!   SHOW_INFO_NODES="true"
 #!   BEGIN_TCL=""
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   LOG_FILE=""
 #!   SHOW_ANNOTATIONS="true"
-#!   TERMINATE_REJECTED="NO"
-#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   ZOOM_SCALE="100"
+#!   FME_SERVER_SERVICES=""
+#!   FME_BUILD_NUM="17539"
+#!   LAST_SAVE_BUILD="FME(R) 2017.1.0.0 (20170731 - Build 17539 - WIN64)"
 #!   MARKDOWN_DESCRIPTION=""
+#!   MAX_LOG_FEATURES="200"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   DESTINATION="NONE"
 #!   REDIRECT_TERMINATORS="NONE"
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   PYTHON_COMPATIBILITY="27"
+#!   TERMINATE_REJECTED="NO"
+#!   PASSWORD=""
+#!   FME_DOCUMENT_PRIORGUID="070a9e31-e136-40e3-8b2f-57e796402fb0,63f0448c-b2a4-4484-896a-4188c8207cfd,53ecdb02-5281-4886-9568-09b728ff58ed,9a243dd3-f7f6-429d-8813-da502012e235,b823ffd6-c25c-488d-bd88-8945a1403624,d4cd2c1c-1fab-488f-9153-f2bd56c0fbdd,c1c924f8-bba4-4810-bb1a-eb052b5af200,a2e2e84b-a0d9-4709-a63d-655ccd2c1df2,e48d5360-e17a-4ffb-b508-f819b81b0873"
+#!   END_PYTHON=""
+#!   CATEGORY=""
+#!   USE_MARKDOWN=""
+#!   SOURCE_ROUTING_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_USAGE=""
+#!   IGNORE_READER_FAILURE="No"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   TITLE=""
+#!   USAGE=""
+#!   DOC_EXTENTS="2508.15 492.251"
+#!   DOC_TOP_LEFT="-1288.76 -338.5"
+#!   DESTINATION_ROUTING_FILE=""
+#!   SOURCE="NONE"
 #! >
 #! <DATASETS>
 #! <DATASET
@@ -70,7 +70,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE=""
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_basename string fme_feature_type string fme_geometry fme_char(50) fme_secondary_axis string fme_type string csv_line_number uint64 multi_reader_type string fme_rotation string csv_skipped_line string fme_text_string string fme_text_size string fme_primary_axis string fme_start_angle string fme_sweep_angle string csv_number_of_fields uint32 fme_color string fme_dataset string multi_reader_full_id string multi_reader_keyword string multi_reader_id string csv_type string fme_fill_color string csv_total_number_of_columns uint32"
+#!   EXPOSABLE_ATTRS="csv_line_number uint64 fme_basename string csv_total_number_of_columns uint32 fme_color string fme_text_string string fme_geometry fme_char(50) fme_text_size string fme_type string multi_reader_keyword string csv_number_of_fields uint32 multi_reader_full_id string fme_start_angle string csv_type string fme_dataset string fme_feature_type string csv_skipped_line string multi_reader_id string fme_secondary_axis string fme_sweep_angle string fme_rotation string multi_reader_type string fme_primary_axis string fme_fill_color string"
 #!   DEFLINE_PARMS=""
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS=""
@@ -79,28 +79,28 @@
 #!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
 #!   DATASET_TYPE="FILEDIR"
 #!   GENERATE_FME_BUILD_NUM="17271"
-#!   MAX_FEATURES_PER_FEATURE_TYPE=""
-#!   MIN_FEATURES=""
-#!   START_FEATURE=""
-#!   FEATURE_TYPES=""
 #!   MAX_FEATURES=""
+#!   START_FEATURE=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
 #!   COORDSYS=""
+#!   MIN_FEATURES=""
+#!   FEATURE_TYPES=""
 #! >
 #! <METAFILE_PARAMETER
-#!   NAME="ATTRIBUTE_READING"
-#!   VALUE="DEFLINE"
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="File1"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="READER_DATASET_HINT"
 #!   VALUE="Select the CSV file(s)"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="DEFAULT_ATTR_TYPE"
-#!   VALUE="string"
+#!   NAME="DATASET_NAME"
+#!   VALUE="csv file"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
-#!   VALUE="File1"
+#!   NAME="DEFAULT_ATTR_TYPE"
+#!   VALUE="string"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="WRITER_DATASET_HINT"
@@ -111,8 +111,8 @@
 #!   VALUE="CSV File"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="DATASET_NAME"
-#!   VALUE="csv file"
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
 #! />
 #! </DATASET>
 #! <DATASET
@@ -128,7 +128,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="SHAPE_GEOMETRY {FME_GEN_GEOMETRY} shape_dimension auto"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_fill_color char(50) fme_text_string char(50) fme_sweep_angle double fme_geometry fme_char(50) fme_start_angle double shape_measures char(254) fme_basename char(50) fme_type char(50) fme_rotation double fme_color char(50) fme_primary_axis double fme_text_size double fme_dataset char(50) SHAPE_GEOMETRY char(50) fme_feature_type char(50) fme_secondary_axis double"
+#!   EXPOSABLE_ATTRS="shape_measures char(254) fme_type char(50) fme_text_size double fme_fill_color char(50) fme_sweep_angle double fme_text_string char(50) fme_dataset char(50) fme_secondary_axis double SHAPE_GEOMETRY char(50) fme_feature_type char(50) fme_rotation double fme_primary_axis double fme_start_angle double fme_geometry fme_char(50) fme_basename char(50) fme_color char(50)"
 #!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP shape_layer_group shape_dimension Shapefile&quot; &quot;&quot; &quot;GUI LOOKUP_CHOICE shape_dimension Dimension&lt;space&gt;From&lt;space&gt;First&lt;space&gt;Feature,auto%2D,2d%2D&lt;space&gt;+&lt;space&gt;Measures,2dm%3D&lt;space&gt;+&lt;space&gt;Measures,3dm Output Dimension:&quot; auto "
 #!   ATTR_INDEX_TYPES="Indexed"
 #!   ATTR_NAME_INVALID_CHARS=". -%[]&quot;!?*&apos;&amp;\/{}"
@@ -137,37 +137,37 @@
 #!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
 #!   DATASET_TYPE="FILEDIR"
 #!   GENERATE_FME_BUILD_NUM="17271"
+#!   COORDSYS="EPSG:3857"
 #!   FANOUT_GROUP="NO"
-#!   FANOUT_EXPRESSION=""
-#!   COORDSYS="EPSG:4326"
+#!   FANOUT_EXPRESSION="&lt;Unused&gt;"
 #! >
 #! <METAFILE_PARAMETER
 #!   NAME="DEFAULT_GEOMETRY_TYPE"
 #!   VALUE="shape_first_feature"
 #! />
 #! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Shapefile1"
+#! />
+#! <METAFILE_PARAMETER
 #!   NAME="READER_DATASET_HINT"
 #!   VALUE="Select the Esri Shapefile(s)"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
-#!   VALUE="Shapefile1"
+#!   NAME="DATASET_NAME"
+#!   VALUE="shp file"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="WRITER_DATASET_HINT"
 #!   VALUE="Specify a folder for the Esri Shapefile"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_NAME"
-#!   VALUE="Shapefile"
-#! />
-#! <METAFILE_PARAMETER
 #!   NAME="ADVANCED_PARMS"
 #!   VALUE="ESRISHAPE_IN_ENCODING ESRISHAPE_IN_TRIM_PRECEDING_SPACES ESRISHAPE_IN_SIMPLE_DONUT_GEOMETRY ESRISHAPE_IN_MEASURES_AS_Z ESRISHAPE_IN_DISSOLVE_HOLES ESRISHAPE_IN_REPORT_BAD_GEOMETRY ESRISHAPE_OUT_STRICT_COMPATIBILITY ESRISHAPE_OUT_PRESERVE_RING_VERTEX_ORDER ESRISHAPE_OUT_SURFACE_AND_SOLID_STORAGE ESRISHAPE_OUT_MEASURES_AS_Z"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="DATASET_NAME"
-#!   VALUE="shp file"
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Shapefile"
 #! />
 #! </DATASET>
 #! </DATASETS>
@@ -769,14 +769,14 @@
 #! </FEATURE_TYPE>
 #! <FEATURE_TYPE
 #!   IS_SOURCE="false"
-#!   NODE_NAME="Openbareverlichting"
+#!   NODE_NAME="openbareverlichting"
 #!   FEATURE_TYPE_NAME=""
 #!   FEATURE_TYPE_NAME_QUALIFIER=""
 #!   IS_EDITABLE="true"
 #!   IDENTIFIER="8"
 #!   FEAT_GEOMTYPE="shape_point"
-#!   POSITION="1191.52 -467.502"
-#!   BOUNDING_RECT="1191.52 -467.502 -1 -1"
+#!   POSITION="668.515 -267.5"
+#!   BOUNDING_RECT="668.515 -267.5 550.873 71"
 #!   ORDER="5e+14"
 #!   COLLAPSED="false"
 #!   KEYWORD="ESRISHAPE_1"
@@ -797,23 +797,23 @@
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI MULTIFILE SourceDataset_CSV2 CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Text_Files(*.txt)|*.txt|All_Files|* Source CSV (Comma Separated Value) File(s):"
-#!   DEFAULT_VALUE="Z:\1. Anwar\AIConsultancy\Datascience Noord NL\DataIn\OVL groningen.csv"
+#!   DEFAULT_VALUE="https://ckan.dataplatform.nl/dataset/8b24358e-40ec-47fc-9d08-6fe121eaff37/resource/505507df-4b22-4d31-9f84-3ed57882457a/download/groningen.csv"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME DestDataset_ESRISHAPE Destination Esri Shapefile Folder:"
-#!   DEFAULT_VALUE="Z:\1. Anwar\AIConsultancy\Datascience Noord NL\DataUit\Openbareverlichting.shp"
+#!   DEFAULT_VALUE="..\data\openbareverlichting.zip"
 #!   IS_STAND_ALONE="false"
 #! />
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
 #!   IDENTIFIER="10"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Auteur&lt;/span&gt;: Anwar Ibrahim&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Datum&lt;/span&gt;: 1-10-2017&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Versie&lt;/span&gt;: 0.1&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Omschrijving&lt;/span&gt;:&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Lat/lon van OVL&apos;s omzetten naar een shape.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-1326.26 210.002"
-#!   TOP_LEFT="-1326.26 210.002"
-#!   BOTTOM_RIGHT="-103.752 -110.001"
-#!   BOUNDING_RECT="-1326.26 210.002 1222.51 320.003"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Auteur&lt;/span&gt;: Anwar Ibrahim&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Datum&lt;/span&gt;: 22-10-2017&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Versie&lt;/span&gt;: 0.2&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Omschrijving&lt;/span&gt;:&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Lat/lon van OVL&apos;s omzetten naar een shape (EPSG:3857).&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1288.76 153.751"
+#!   TOP_LEFT="-1288.76 153.751"
+#!   BOTTOM_RIGHT="-66.2496 -166.252"
+#!   BOUNDING_RECT="-1288.76 153.751 1222.51 320.003"
 #!   ORDER="5e+14"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -832,8 +832,8 @@
 #!   IDENTIFIER="4"
 #!   TYPE="VertexCreator"
 #!   VERSION="2"
-#!   POSITION="-641.007 -245.498"
-#!   BOUNDING_RECT="-641.007 -245.498 -1 -1"
+#!   POSITION="-633.879 -249"
+#!   BOUNDING_RECT="-633.879 -249 -1 -1"
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -852,49 +852,21 @@
 #!     <XFORM_ATTR ATTR_NAME="mastnummer" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="gemeente" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="VertexCreator"/>
+#!     <XFORM_PARM PARM_NAME="YVAL" PARM_VALUE="@Value(latitude)"/>
 #!     <XFORM_PARM PARM_NAME="ZVAL" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="MODE_NAME" PARM_VALUE="Add Point"/>
-#!     <XFORM_PARM PARM_NAME="PARAMETER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="YVAL" PARM_VALUE="@Value(latitude)"/>
-#!     <XFORM_PARM PARM_NAME="XVAL" PARM_VALUE="@Value(longitude)"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="VertexCreator"/>
 #!     <XFORM_PARM PARM_NAME="INDEX" PARM_VALUE="&lt;Unused&gt;"/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="6"
-#!   TYPE="Inspector"
-#!   VERSION="4"
-#!   POSITION="1076.51 -56.4971"
-#!   BOUNDING_RECT="1076.51 -56.4971 -1 -1"
-#!   ORDER="5e+14"
-#!   PARMS_EDITED="true"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="17271"
-#! >
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="VertexCreator_Output"/>
-#!     <XFORM_PARM PARM_NAME="THINNER_INTERVAL" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="RASTER_START_COL" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="THINNER_MAX_NUM_POINTS" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="VECTOR_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="RASTER_START_ROW" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="THINNER_TYPE_DISPLAY" PARM_VALUE="No Thinning"/>
-#!     <XFORM_PARM PARM_NAME="PEN_COLOR" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="RASTER_VISUALIZATION_OPTION" PARM_VALUE="No Reduction"/>
-#!     <XFORM_PARM PARM_NAME="RASTER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="RASTER_NUM_ROWS" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="POINTCLOUD_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TACKATTRS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="RASTER_NUM_COLS" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="AREA_COLOR" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XVAL" PARM_VALUE="@Value(longitude)"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETER_GROUP" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="26"
 #!   TYPE="CoordinateSystemSetter"
 #!   VERSION="0"
-#!   POSITION="14.0002 -267.5"
-#!   BOUNDING_RECT="14.0002 -267.5 -1 -1"
+#!   POSITION="-49.7472 -249"
+#!   BOUNDING_RECT="-49.7472 -249 564.131 71"
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -906,9 +878,9 @@
 #!     <XFORM_ATTR ATTR_NAME="latitude" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="mastnummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="gemeente" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="CoordinateSystemSetter"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="CoordinateSystemSetter"/>
 #!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE="EPSG:4326"/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
@@ -936,24 +908,13 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="28"
-#!   SOURCE_NODE="26"
-#!   TARGET_NODE="6"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
 #!   IDENTIFIER="9"
 #!   SOURCE_NODE="26"
 #!   TARGET_NODE="8"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="-1"
 #!   ENABLED="true"
-#!   EXECUTION_IDX="1"
+#!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
 #!   EXTRA_POINTS=""
 #! />
@@ -969,9 +930,9 @@
 #! </WORKSPACE>
 FME_PYTHON_VERSION 27
 GUI IGNORE SourceDataset_CSV2_1,CSV2_IN_DATASET_GROUP_CSV2_1,CSV2_IN_FIELDS_GROUP_CSV2_1,CSV2_IN_DELIMITER_CSV2_1,CSV2_IN_FIELD_NAMES_LINE_CSV2_1,CSV2_IN_DATA_START_LINE_CSV2_1,CSV2_IN_ADVANCED_GROUP_CSV2_1,CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1,CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1,CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1,CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1,CSV2_IN_FIELD_NAMES_GROUP_CSV2_1,CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1,CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1,CSV2_IN_FIELD_VALUES_GROUP_CSV2_1,CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1,CSV2_IN_ENCODING_GROUP_CSV2_1,CSV2_IN_ENCODING_CSV2_1,CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1,CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1,CSV2_IN_READ_SKIPPED_LINES_CSV2_1,CSV2_IN_SCHEMA_GENERATION_GROUP_CSV2_1,CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1,CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1,DestDataset_ESRISHAPE_1,ESRISHAPE_OUT_ENCODING_ESRISHAPE_1,ESRISHAPE_OUT_WRITE_SPATIAL_INDEX_ESRISHAPE_1,ESRISHAPE_OUT_COMPRESSED_SHAPE_FILE_ESRISHAPE_1,ESRISHAPE_OUT_ADVANCED_ESRISHAPE_1,ESRISHAPE_OUT_STRICT_COMPATIBILITY_ESRISHAPE_1,ESRISHAPE_OUT_GEOMETRY_ESRISHAPE_1,ESRISHAPE_OUT_PRESERVE_RING_VERTEX_ORDER_ESRISHAPE_1,ESRISHAPE_OUT_MEASURES_AS_Z_ESRISHAPE_1
-DEFAULT_MACRO SourceDataset_CSV2 Z:\1. Anwar\AIConsultancy\Datascience Noord NL\DataIn\OVL groningen.csv
+DEFAULT_MACRO SourceDataset_CSV2 https://ckan.dataplatform.nl/dataset/8b24358e-40ec-47fc-9d08-6fe121eaff37/resource/505507df-4b22-4d31-9f84-3ed57882457a/download/groningen.csv
 GUI MULTIFILE SourceDataset_CSV2 CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Text_Files(*.txt)|*.txt|All_Files|* Source CSV (Comma Separated Value) File(s):
-DEFAULT_MACRO DestDataset_ESRISHAPE Z:\1. Anwar\AIConsultancy\Datascience Noord NL\DataUit\Openbareverlichting.shp
+DEFAULT_MACRO DestDataset_ESRISHAPE ..\data\openbareverlichting.zip
 GUI DIRNAME DestDataset_ESRISHAPE Destination Esri Shapefile Folder:
 INCLUDE [ if {{$(SourceDataset_CSV2)} == {}} { puts_real {Parameter 'SourceDataset_CSV2' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(DestDataset_ESRISHAPE)} == {}} { puts_real {Parameter 'DestDataset_ESRISHAPE' must be given a value.}; exit 1; }; ]
@@ -1007,10 +968,12 @@ INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
 #! START_SOURCE_HEADER CSV2 CSV2_1
 DEFAULT_MACRO SourceDataset_CSV2_1 $(SourceDataset_CSV2)
 GUI MULTIFILE SourceDataset_CSV2_1 CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Text_Files(*.txt)|*.txt|All_Files|* Source CSV (Comma Separated Value) File(s):
-GUI DISCLOSUREGROUP CSV2_IN_DATASET_GROUP_CSV2_1 FME_DISCLOSURE_OPEN%FEATURE_TYPE_NAME Dataset Parameters
+DEFAULT_MACRO CSV2_IN_DATASET_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_DATASET_GROUP_CSV2_1 FME_DISCLOSURE_OPEN%FEATURE_TYPE_NAME Dataset Parameters
 DEFAULT_MACRO CSV2_IN_FEATURE_TYPE_NAME_CSV2_1 FORMAT_NAME
 CSV2_1_FEATURE_TYPE_NAME "$(CSV2_IN_FEATURE_TYPE_NAME_CSV2_1)"
-GUI DISCLOSUREGROUP CSV2_IN_FIELDS_GROUP_CSV2_1 FME_DISCLOSURE_OPEN%DELIMITER%FIELD_NAMES_LINE%DATA_START_LINE Fields
+DEFAULT_MACRO CSV2_IN_FIELDS_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELDS_GROUP_CSV2_1 FME_DISCLOSURE_OPEN%DELIMITER%FIELD_NAMES_LINE%DATA_START_LINE Fields
 DEFAULT_MACRO CSV2_IN_DELIMITER_CSV2_1 <comma>
 CSV2_1_DELIMITER "$(CSV2_IN_DELIMITER_CSV2_1)"
 GUI STRING_OR_CHOICE_ENCODED CSV2_IN_DELIMITER_CSV2_1 ,%;%|%space%tab Delimiter Character:
@@ -1020,8 +983,10 @@ GUI OPTIONAL RANGE_SLIDER CSV2_IN_FIELD_NAMES_LINE_CSV2_1 1%MAX%0 Field Names Li
 DEFAULT_MACRO CSV2_IN_DATA_START_LINE_CSV2_1 2
 CSV2_1_DATA_START_LINE "$(CSV2_IN_DATA_START_LINE_CSV2_1)"
 GUI RANGE_SLIDER CSV2_IN_DATA_START_LINE_CSV2_1 1%MAX%0 Data Start Line:
-GUI DISCLOSUREGROUP CSV2_IN_ADVANCED_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%FIELD_SEPARATION_GROUP%FIELD_NAMES_GROUP%FIELD_VALUES_GROUP%ENCODING_GROUP%SKIPPED_LINES_GROUP%SCHEMA_GENERATION_GROUP Advanced
-GUI DISCLOSUREGROUP CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%SKIP_DUPLICATE_DELIMITERS%FIELD_QUALIFIER_CHARACTER%FIELD_QUALIFIER_ESCAPE_CHARACTER Field Separation
+DEFAULT_MACRO CSV2_IN_ADVANCED_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_ADVANCED_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%FIELD_SEPARATION_GROUP%FIELD_NAMES_GROUP%FIELD_VALUES_GROUP%ENCODING_GROUP%SKIPPED_LINES_GROUP%SCHEMA_GENERATION_GROUP Advanced
+DEFAULT_MACRO CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%SKIP_DUPLICATE_DELIMITERS%FIELD_QUALIFIER_CHARACTER%FIELD_QUALIFIER_ESCAPE_CHARACTER Field Separation
 DEFAULT_MACRO CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1 No
 CSV2_1_SKIP_DUPLICATE_DELIMITERS "$(CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1)"
 GUI CHOICE CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1 Yes%No Skip Duplicate Delimiters:
@@ -1031,7 +996,8 @@ GUI OPTIONAL STRING_ENCODED CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1 Field Quali
 DEFAULT_MACRO CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 <quote>
 CSV2_1_FIELD_QUALIFIER_ESCAPE_CHARACTER "$(CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1)"
 GUI OPTIONAL STRING_ENCODED CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 Field Qualifier Escape Character:
-GUI DISCLOSUREGROUP CSV2_IN_FIELD_NAMES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CASE_SENSITIVE_FIELD_NAMES%ENFORCE_STRICT_SCHEMA Field Names
+DEFAULT_MACRO CSV2_IN_FIELD_NAMES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_NAMES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CASE_SENSITIVE_FIELD_NAMES%ENFORCE_STRICT_SCHEMA Field Names
 DEFAULT_MACRO CSV2_IN_TRIM_FIELD_NAME_QUALIFIERS_CSV2_1 Yes
 CSV2_1_TRIM_FIELD_NAME_QUALIFIERS "$(CSV2_IN_TRIM_FIELD_NAME_QUALIFIERS_CSV2_1)"
 DEFAULT_MACRO CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1 Yes
@@ -1040,22 +1006,26 @@ GUI CHOICE CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1 Yes%No Case Sensitive Field
 DEFAULT_MACRO CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1 No
 CSV2_1_ENFORCE_STRICT_SCHEMA "$(CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1)"
 GUI CHOICE CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1 Yes%No Enforce Strict Schema:
-GUI DISCLOSUREGROUP CSV2_IN_FIELD_VALUES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%TRIM_FIELD_VALUE_QUALIFIERS Field Values
+DEFAULT_MACRO CSV2_IN_FIELD_VALUES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_VALUES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%TRIM_FIELD_VALUE_QUALIFIERS Field Values
 DEFAULT_MACRO CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1 Yes
 CSV2_1_TRIM_FIELD_VALUE_QUALIFIERS "$(CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1)"
 GUI CHOICE CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1 Yes%No Trim Field Qualifier Characters:
-GUI DISCLOSUREGROUP CSV2_IN_ENCODING_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%ENCODING%PRESERVE_SOURCE_ENCODING Encoding
+DEFAULT_MACRO CSV2_IN_ENCODING_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_ENCODING_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%ENCODING%PRESERVE_SOURCE_ENCODING Encoding
 DEFAULT_MACRO CSV2_IN_ENCODING_CSV2_1 
 CSV2_1_ENCODING "$(CSV2_IN_ENCODING_CSV2_1)"
 GUI OPTIONAL STRING_OR_ENCODING CSV2_IN_ENCODING_CSV2_1 SYSTEM%* Character Encoding:
 DEFAULT_MACRO CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 No
 CSV2_1_PRESERVE_SOURCE_ENCODING "$(CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1)"
 GUI CHOICE CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 Yes%No Preserve Source Encoding:
-GUI DISCLOSUREGROUP CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%READ_SKIPPED_LINES Skipped Lines
+DEFAULT_MACRO CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%READ_SKIPPED_LINES Skipped Lines
 DEFAULT_MACRO CSV2_IN_READ_SKIPPED_LINES_CSV2_1 No
 CSV2_1_READ_SKIPPED_LINES "$(CSV2_IN_READ_SKIPPED_LINES_CSV2_1)"
 GUI CHOICE CSV2_IN_READ_SKIPPED_LINES_CSV2_1 Yes%No Read Skipped Lines:
-GUI DISCLOSUREGROUP CSV2_IN_SCHEMA_GENERATION_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%SCAN_MAX_ROWS%SCAN_TYPES%SCAN_ADDITIONAL_FIELDS Schema Generation
+DEFAULT_MACRO CSV2_IN_SCHEMA_GENERATION_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_SCHEMA_GENERATION_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%SCAN_MAX_ROWS%SCAN_TYPES%SCAN_ADDITIONAL_FIELDS Schema Generation
 DEFAULT_MACRO CSV2_IN_SCAN_MAX_ROWS_CSV2_1 1000
 CSV2_1_SCAN_MAX_ROWS "$(CSV2_IN_SCAN_MAX_ROWS_CSV2_1)"
 DEFAULT_MACRO CSV2_IN_SCAN_TYPES_CSV2_1 No
@@ -1064,7 +1034,7 @@ DEFAULT_MACRO CSV2_IN_SCAN_ADDITIONAL_FIELDS_CSV2_1 No
 CSV2_1_SCAN_ADDITIONAL_FIELDS "$(CSV2_IN_SCAN_ADDITIONAL_FIELDS_CSV2_1)"
 DEFAULT_MACRO CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1 
 CSV2_1_EXPOSE_ATTRS_GROUP "$(CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1)"
-GUI DISCLOSUREGROUP CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1 CSV2_EXPOSE_FORMAT_ATTRS Schema Attributes
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1 CSV2_EXPOSE_FORMAT_ATTRS Schema Attributes
 # ===========================================================================
 DEFAULT_MACRO CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1 
 CSV2_1_NETWORK_AUTHENTICATION "$(CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1)"
@@ -1113,26 +1083,28 @@ GUI OPTIONAL ENCODING ESRISHAPE_OUT_ENCODING_ESRISHAPE_1 ANSI%SYSTEM%BIG5%EUC%HK
 # PR2557: Specifies whether or not the reader will generate spatial index files
 DEFAULT_MACRO ESRISHAPE_OUT_WRITE_SPATIAL_INDEX_ESRISHAPE_1 No
 ESRISHAPE_1_WRITE_SPATIAL_INDEX "$(ESRISHAPE_OUT_WRITE_SPATIAL_INDEX_ESRISHAPE_1)"
-GUI CHECKBOX ESRISHAPE_OUT_WRITE_SPATIAL_INDEX_ESRISHAPE_1 Yes%No Write Spatial Index
+GUI OPTIONAL CHECKBOX ESRISHAPE_OUT_WRITE_SPATIAL_INDEX_ESRISHAPE_1 Yes%No Write Spatial Index
 DEFAULT_MACRO ESRISHAPE_OUT_COMPRESSED_SHAPE_FILE_ESRISHAPE_1 No
 ESRISHAPE_1_COMPRESSED_SHAPE_FILE "$(ESRISHAPE_OUT_COMPRESSED_SHAPE_FILE_ESRISHAPE_1)"
-GUI CHECKBOX ESRISHAPE_OUT_COMPRESSED_SHAPE_FILE_ESRISHAPE_1 Yes%No Create Compressed Shapefile (.shz)
+GUI OPTIONAL CHECKBOX ESRISHAPE_OUT_COMPRESSED_SHAPE_FILE_ESRISHAPE_1 Yes%No Create Compressed Shapefile (.shz)
 DEFAULT_MACRO ESRISHAPE_OUT_DIMENSION_ESRISHAPE_1 auto
 ESRISHAPE_1_DIMENSION "$(ESRISHAPE_OUT_DIMENSION_ESRISHAPE_1)"
-GUI DISCLOSUREGROUP ESRISHAPE_OUT_ADVANCED_ESRISHAPE_1 STRICT_COMPATIBILITY%GEOMETRY Advanced
+DEFAULT_MACRO ESRISHAPE_OUT_ADVANCED_ESRISHAPE_1 
+GUI OPTIONAL DISCLOSUREGROUP ESRISHAPE_OUT_ADVANCED_ESRISHAPE_1 STRICT_COMPATIBILITY%GEOMETRY Advanced
 # ============================================================================
 # BUG31474: Add an Strict compatibility flag to prevent some apps from
 # crashing when record lengths are too long. By default, we want to write
 # compatible files going forward.
 DEFAULT_MACRO ESRISHAPE_OUT_STRICT_COMPATIBILITY_ESRISHAPE_1 Yes
 ESRISHAPE_1_STRICT_COMPATIBILITY "$(ESRISHAPE_OUT_STRICT_COMPATIBILITY_ESRISHAPE_1)"
-GUI CHECKBOX ESRISHAPE_OUT_STRICT_COMPATIBILITY_ESRISHAPE_1 Yes%No Strict Compatibility
-GUI DISCLOSUREGROUP ESRISHAPE_OUT_GEOMETRY_ESRISHAPE_1 PRESERVE_RING_VERTEX_ORDER%SURFACE_AND_SOLID_STORAGE%MEASURES_AS_Z Geometry
+GUI OPTIONAL CHECKBOX ESRISHAPE_OUT_STRICT_COMPATIBILITY_ESRISHAPE_1 Yes%No Strict Compatibility
+DEFAULT_MACRO ESRISHAPE_OUT_GEOMETRY_ESRISHAPE_1 
+GUI OPTIONAL DISCLOSUREGROUP ESRISHAPE_OUT_GEOMETRY_ESRISHAPE_1 PRESERVE_RING_VERTEX_ORDER%SURFACE_AND_SOLID_STORAGE%MEASURES_AS_Z Geometry
 # ============================================================
 # BUG39095: Add an option to preserve input ring vertex order.
 DEFAULT_MACRO ESRISHAPE_OUT_PRESERVE_RING_VERTEX_ORDER_ESRISHAPE_1 No
 ESRISHAPE_1_PRESERVE_RING_VERTEX_ORDER "$(ESRISHAPE_OUT_PRESERVE_RING_VERTEX_ORDER_ESRISHAPE_1)"
-GUI CHECKBOX ESRISHAPE_OUT_PRESERVE_RING_VERTEX_ORDER_ESRISHAPE_1 Yes%No Preserve Ring Vertex Order
+GUI OPTIONAL CHECKBOX ESRISHAPE_OUT_PRESERVE_RING_VERTEX_ORDER_ESRISHAPE_1 Yes%No Preserve Ring Vertex Order
 # ============================================================================
 # Opt in for destination dataset type vs format type validation
 DEFAULT_MACRO ESRISHAPE_OUT_DESTINATION_DATASETTYPE_VALIDATION_ESRISHAPE_1 Yes
@@ -1151,7 +1123,7 @@ ESRISHAPE_1_DATASET "$(DestDataset_ESRISHAPE_1)"
 
 #! END_HEADER
 
-LOG_FILENAME "$(FME_MF_DIR)Openbare verlichting.log"
+LOG_FILENAME "$(FME_MF_DIR)openbareverlichting.log"
 LOG_APPEND NO
 LOG_MAX_FEATURES 200
 LOG_MAX_RECORDED_FEATURES 200
@@ -1159,7 +1131,6 @@ FME_REPROJECTION_ENGINE FME
 FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
 FME_GEOMETRY_HANDLING Enhanced
 FME_STROKE_MAX_DEVIATION 0
-LOG_TIMINGS YES
 LOG_FILTER_MASK -1
 DEFAULT_MACRO DATASET_KEYWORD_CSV2_1 CSV2_1
 DEFAULT_MACRO DATASET_KEYWORD_ESRISHAPE_1 ESRISHAPE_1
@@ -1169,19 +1140,13 @@ CSV2_1_READER_META_ATTRIBUTES fme_feature_type
 
 # -------------------------------------------------------------------------
 
-ESRISHAPE_1_COORDINATE_SYSTEM EPSG:4326
+ESRISHAPE_1_COORDINATE_SYSTEM EPSG:3857
 MULTI_READER_CONTINUE_ON_READER_FAILURE No
 
 # -------------------------------------------------------------------------
 
-MACRO WORKSPACE_NAME Openbare verlichting
+MACRO WORKSPACE_NAME openbareverlichting
 MACRO FME_VIEWER_APP fmedatainspector
-# -------------------------------------------------------------------------
-
-INCLUDE [ if {[info exists env(FME_TEMP)] && [file isdirectory $env(FME_TEMP)]} {set gVisualizerTemp $env(FME_TEMP)}  elseif {[info exists env(TEMP)] && [file isdirectory $env(TEMP)]}  {set gVisualizerTemp $env(TEMP)}  elseif { $tcl_platform(platform) == "unix" } {set gVisualizerTemp "/tmp"} else {set gVisualizerTemp c:};  regsub -all {[ ,&]} {$(WORKSPACE_NAME)} {_} wsname; set gVisualizerTemp $gVisualizerTemp/${wsname}_[clock format [clock seconds] -format %H%M%S];  puts "MACRO WORKSPACE_TEMP_DIR $gVisualizerTemp"; 
-MACRO VISUALIZER_FEATURE_FILE $(WORKSPACE_TEMP_DIR)/inspector.ffs
-MACRO VISUALIZER_SCHEMA_FILE $(WORKSPACE_TEMP_DIR)/inspector.fsc
-MACRO VISUALIZER_CREATE_SPATIAL_INDEX YES
 # -------------------------------------------------------------------------
 CSV2_1_DEF CSV   fme_attribute_reading        defined   longitude                    string   latitude                     string   mastnummer                   string   gemeente                     string
 # -------------------------------------------------------------------------
@@ -1200,57 +1165,12 @@ FACTORY_DEF * VertexCreatorFactory    FACTORY_NAME VertexCreator    INPUT  FEATU
 
 FACTORY_DEF * TeeFactory    FACTORY_NAME CoordinateSystemSetter    INPUT  FEATURE_TYPE VertexCreator_OUTPUT    OUTPUT FEATURE_TYPE CoordinateSystemSetter_OUTPUT         @CoordSys("EPSG:4326")
 
-FACTORY_DEF * TeeFactory   FACTORY_NAME "CoordinateSystemSetter OUTPUT Splitter"   INPUT FEATURE_TYPE CoordinateSystemSetter_OUTPUT   OUTPUT FEATURE_TYPE CoordinateSystemSetter_OUTPUT_0_PL4N+Vr4nAw=   OUTPUT FEATURE_TYPE CoordinateSystemSetter_OUTPUT_1_Zm/+LiWDUYk=
 # -------------------------------------------------------------------------
 
-# Assumption is that the workspace temp dir has been already set and created.  See controldefs.cpp - ControlDefs::writeVisualizerTempDir
-DEFAULT_MACRO WORKSPACE_TEMP_DIR
-INCLUDE [         set grpByAttrs {};         if { [string length $grpByAttrs] > 0 } {             if { [string first "@EvaluateExpression" $grpByAttrs] == 0 } {                 puts "MACRO CATMAC _$grpByAttrs" ;             } else {                set catter "" ;                set comma "" ;                foreach attr $grpByAttrs {                    set catter "$catter$comma@Value(\"$attr\")" ;                    set comma ",_," ;                } ;                puts "MACRO CATMAC _@Concatenate($catter)" ;             }         }         else {             puts "MACRO CATMAC " ;         };         set safeName "[regsub -all {[^a-zA-Z0-9]} {VertexCreator_Output} _]_[expr round(rand() * 1000000)]_[clock clicks  -milliseconds]";         puts "MACRO SAFE_FFS_NAME $safeName";         ]
-# Make the temporary directory that the FFS files will live in.
-FACTORY_DEF * CreationFactory      FACTORY_NAME VertexCreator_Output_DirCreator      OUTPUT FEATURE_TYPE __nukeme__          @Tcl2("catch {file mkdir {$(WORKSPACE_TEMP_DIR)}}")
-FACTORY_DEF * TeeFactory    FACTORY_NAME VertexCreator_Output_DirCreatorCleanerUpper    INPUT FEATURE_TYPE __nukeme__
-# Send raster, point cloud and vector features down different paths to prepare
-# them for viewing
-
-FACTORY_DEF * TestFactory    FACTORY_NAME VertexCreator_Output_FeatureDirector    INPUT  FEATURE_TYPE CoordinateSystemSetter_OUTPUT_0_PL4N+Vr4nAw=    TEST &fme_type == "fme_raster"    OUTPUT FAILED FEATURE_TYPE VertexCreator_Output___NotRasterFeatures___    OUTPUT PASSED FEATURE_TYPE VertexCreator_Output___RasterFeatures___
-FACTORY_DEF * TestFactory    FACTORY_NAME VertexCreator_Output___FeatureDirector1    INPUT FEATURE_TYPE VertexCreator_Output___NotRasterFeatures___    TEST &fme_type == "fme_point_cloud"    OUTPUT FAILED FEATURE_TYPE VertexCreator_Output___VectorFeatures___    OUTPUT PASSED FEATURE_TYPE VertexCreator_Output___PointCloudFeatures___
-# Vector features simply may get their colors overridden
-
-FACTORY_DEF * TeeFactory    FACTORY_NAME VertexCreator_Output_VectorSetterUpper    INPUT FEATURE_TYPE VertexCreator_Output___VectorFeatures___    OUTPUT FEATURE_TYPE __viewme__
-# Point Cloud Features Might Need to be thinned
-
-# Note that we don't call the ThinPointCloud function directly, but rather
-# do it through TCL. This should allow this transformer to be used with a
-# Desktop license, even though ThinPointCloud requires Professional.
-
-Tcl2 proc VertexCreator_Output_416127be_9425_4469_b505_17364e2f7cb40_thinPointCloud {} {    if {[string equal {NO_THINNING} {KEEPNPOINT}]}    {       FME_Execute ThinPointCloud NO_THINNING "\"<Unused>\"";    }    elseif {[string equal {NO_THINNING} {MAXNUMPOINTS}]}    {       FME_Execute ThinPointCloud NO_THINNING "\"<Unused>\"";    }    elseif {[string equal {NO_THINNING} {FIRSTNPOINTS}]}    {       FME_Execute ThinPointCloud NO_THINNING "\"<Unused>\"";    }    elseif {[string equal {NO_THINNING} {LASTNPOINTS}]}    {       FME_Execute ThinPointCloud NO_THINNING "\"<Unused>\"";    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME VertexCreator_Output___PointCloudThinner    INPUT FEATURE_TYPE VertexCreator_Output___PointCloudFeatures___    OUTPUT FEATURE_TYPE __viewme__       @Tcl2("VertexCreator_Output_416127be_9425_4469_b505_17364e2f7cb40_thinPointCloud")
-Tcl2 proc VertexCreator_Output_416127be_9425_4469_b505_17364e2f7cb40_prepareRaster {subsetStartRow subsetNumRows subsetStartCol subsetNumCols} {    set useDI [string equal -nocase {$(FME_VIEWER_APP)} {fmedatainspector}];    if {!$useDI} {       FME_Execute ApplyRasterRotation BILINEAR;    };    set doResample [string equal {NoReduction} {Resample}];    set doSubset [string equal {NoReduction} {Subset}];    set doBounds [string equal {NoReduction} {BoundingBoxOnly}];    if {$doBounds}  {       FME_Execute GeometryType fme_polygon;    }    elseif {$doResample || $doSubset} {       set comment {          First, we need to prefix all the attributes. This is done because          we are going to call @RasterProperties, and we want to make sure          it doesn't overwrite any existing attributes.       };       set kAttrPrefix ".";       set allNames [FME_AttributeNames];       foreach oldName $allNames {          set newName $kAttrPrefix;          append newName $oldName;          FME_RenameAttribute $newName $oldName;       };       FME_Execute RasterProperties RASTER;       if {$doResample} {          set oldNumCols [FME_GetAttribute _num_columns];          set oldNumRows [FME_GetAttribute _num_rows];          set oldSpacingX [FME_GetAttribute _spacing_x];          set oldSpacingY [FME_GetAttribute _spacing_y];          set kMinNumCells 32;          set kMaxNumCells 512;          set comment {             We will only resample if both dimensions are greater than the             minimum num cells, and at least one is greater than the maximum.          };          if {$oldNumRows > $kMinNumCells && $oldNumCols > $kMinNumCells && ($oldNumRows > $kMaxNumCells || $oldNumCols > $kMaxNumCells)} {             set newSpacingX 1.0;             set newSpacingY 1.0;             if {$oldNumRows > $oldNumCols} {                set comment {                   If we have more rows than columns, we need to choose a spacing                   that reduces the number of rows to the maximum we've chosen.                };                set newSpacingY [expr 1.0 * $oldNumRows * $oldSpacingY / $kMaxNumCells];                set newSpacingX [expr 1.0 * $newSpacingY / $oldSpacingY * $oldSpacingX];                set comment {                   Now we need to check if doing this will result in the columns                   going below the minimum. If so, choose the spacing such that                   we only go down to the minimum (and not past).                };                set newNumCols [expr $oldNumCols * $oldSpacingX / $newSpacingX];                if {$newNumCols < $kMinNumCells}                {                   set newSpacingX [expr 1.0 * $oldNumCols * $oldSpacingX / $kMinNumCells];                   set newSpacingY [expr 1.0 * $newSpacingX / $oldSpacingX * $oldSpacingY];                };             }             else {                set comment {                   This is identical to the above case, except the roles of                   rows and cols are reversed.                };                set newSpacingX [expr 1.0 * $oldNumCols * $oldSpacingX / $kMaxNumCells];                set newSpacingY [expr 1.0 * $newSpacingX / $oldSpacingX * $oldSpacingY];                set newNumRows [expr $oldNumRows * $oldSpacingY / $newSpacingY];                if {$newNumRows < $kMinNumCells}                {                   set newSpacingY [expr 1.0 * $oldNumRows * $oldSpacingY / $kMinNumCells];                   set newSpacingX [expr 1.0 * $newSpacingY / $oldSpacingY * $oldSpacingX];                };             };             FME_Execute ResampleRaster CELL_SIZE $newSpacingX $newSpacingY NearestNeighbor;          };       }       elseif {$doSubset} {          set comment {             Get the value of some strings that may be attributes or constants.             Note that we pass in the attribute prefix we're using, because if             one does turn out to be an attribute, it won't actually be the exact             name in the string (since we renamed all our attributes above).          };          set rasterNumRows [FME_GetAttribute _num_rows];          set rasterNumCols [FME_GetAttribute _num_columns];          set comment {             Only do subsetting if the specified start position is actually             within the raster.          };          if {$subsetStartRow < $rasterNumRows && $subsetStartCol < $rasterNumCols}          {             set comment {                Now bound the subset to the size of the raster, so that                we don't create padding.             };             if {[expr $subsetStartRow + $subsetNumRows] > $rasterNumRows}             {                set subsetNumRows [expr $rasterNumRows - $subsetStartRow];             };             if {[expr $subsetStartCol + $subsetNumCols] > $rasterNumCols}             {                set subsetNumCols [expr $rasterNumCols - $subsetStartCol];             };             FME_Execute SubsetRaster $subsetStartRow $subsetNumRows $subsetStartCol $subsetNumCols;          };       };       set comment {          Remove all the attributes added by @RasterProperties and remove the          prefix from the real attributes. We assume they all start with an          underscore.       };       FME_Execute RemoveAttributes fme_regexp_match {^_};       foreach oldName $allNames {          set newName $kAttrPrefix;          append newName $oldName;          FME_RenameAttribute $oldName $newName;       };    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME VertexCreator_Output_RasterSetterUpper    INPUT FEATURE_TYPE VertexCreator_Output___RasterFeatures___    OUTPUT FEATURE_TYPE __viewme__       @Tcl2("VertexCreator_Output_416127be_9425_4469_b505_17364e2f7cb40_prepareRaster {<Unused>} {<Unused>} {<Unused>} {<Unused>}")
-# Now route all the features into the recorder, changing their
-# feature type to the transformer name so that they view nicely
-# VertexCreator_Output_416127be_9425_4469_b505_17364e2f7cb40_VIS_FEAT_TYPE changes the feature types
-# of the features being visualized.
-
-DEFAULT_MACRO VertexCreator_Output_416127be_9425_4469_b505_17364e2f7cb40_VIS_FEAT_TYPE VertexCreator_Output$(CATMAC)
-DEFAULT_MACRO VISUALIZER_FEATURE_FILE $(WORKSPACE_TEMP_DIR)/$(SAFE_FFS_NAME).ffs
-DEFAULT_MACRO VISUALIZER_CREATE_SPATIAL_INDEX NO
-# [PR#45549] The Data Inspector will limit the maximum number of features
-# it reads on WIN32, so we will correspondingly limit the number of
-# features we record here using the MAX_FEATURES_TO_RECORD directive.
-
-FACTORY_DEF * RecorderFactory    FACTORY_NAME VertexCreator_Output_Recorder    INPUT FEATURE_TYPE __viewme__  _wb_termination_feature Yes @FeatureType(TERMINATOR_@Value(_wb_termination_xformer))    INPUT FEATURE_TYPE __viewme__  @FeatureType($(VertexCreator_Output_416127be_9425_4469_b505_17364e2f7cb40_VIS_FEAT_TYPE))    FEATURE_FILE "$(VISUALIZER_FEATURE_FILE)"    CREATE_SPATIAL_INDEX "$(VISUALIZER_CREATE_SPATIAL_INDEX)"    INSPECTOR "$(VISUALIZER_CREATE_SPATIAL_INDEX)"    FSC_SCHEMA longitude,varchar<openparen>255<closeparen>,latitude,varchar<openparen>255<closeparen>,mastnummer,varchar<openparen>255<closeparen>,gemeente,varchar<openparen>255<closeparen>    MODE RECORD    STORE_SCANNED_METADATA    RECORD_DIRECTLY_TO_DISK YES    MAX_FEATURES_TO_RECORD WIN32 2000000
-
-# -------------------------------------------------------------------------
-
-FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC CoordinateSystemSetter_OUTPUT_1_Zm/+LiWDUYk= TO ESRISHAPE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>Openbareverlichting<closeparen> COORDINATE_SYSTEM EPSG:4326 GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC CoordinateSystemSetter_OUTPUT TO ESRISHAPE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>openbareverlichting<closeparen> COORDINATE_SYSTEM EPSG:3857 GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
 
 # -------------------------------------------------------------------------
-
-FACTORY_DEF * CreationFactory   CREATE_AT_END   OUTPUT FEATURE_TYPE __NUKEME__   @TCL("if [file exists {$(WORKSPACE_TEMP_DIR)}] {set files [glob -nocomplain -directory  {$(WORKSPACE_TEMP_DIR)} -tails *.ffs];   if {[llength $files] == 1} {    set theFile {$(WORKSPACE_TEMP_DIR)/};   append theFile [lindex $files 0];   eval FME_Execute System \173\042$(FME_HOME_UNIX)/fmedatainspector\042 --visualizer --single-application --delete-on-close --no-source-prompt -f FFS $theFile & \175;  } elseif { [llength $files] == 0 } {  catch { file delete -force {$(WORKSPACE_TEMP_DIR)} };  } else {  set filesNoExt {}; set lastfile {}; foreach {fileName} [lsort $files] { set fileNoExt [string trimright $fileName {.ffs}]; if [regexp {(.*)_[0-9]*$} $fileNoExt wholething fileNoExtBase] {  if { $fileNoExtBase == $lastfile } { continue } }; set lastfile $fileNoExt; lappend filesNoExt $fileNoExt };  eval FME_Execute System \173\042$(FME_HOME_UNIX)/fmedatainspector\042 --visualizer --single-application --delete-on-close --no-source-prompt -d {$(WORKSPACE_TEMP_DIR)} -a ffs -f FFS $filesNoExt & \175; }; }; ")
-FACTORY_DEF * TeeFactory   INPUT FEATURE_TYPE __NUKEME__
-# -------------------------------------------------------------------------
-ESRISHAPE_1_DEF Openbareverlichting   SHAPE_GEOMETRY               shape_point   shape_dimension              auto   mastnummer                   char(254)   gemeente                     char(254)   longitude                    char(254)   latitude                     char(254)
+ESRISHAPE_1_DEF openbareverlichting   SHAPE_GEOMETRY               shape_point   shape_dimension              auto   mastnummer                   char(254)   gemeente                     char(254)   longitude                    char(254)   latitude                     char(254)
