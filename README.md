@@ -8,6 +8,11 @@ Het gaat om de volgende datasets in de map [data](https://github.com/Kennisnetwe
 * Openbare verlichting (bron: [Dataplatform.nl](https://ckan.dataplatform.nl/dataset/ovl-groningen), Gemeente Groningen)
 * Verblijfsobjecten (bron: Basisregistratie Adressen en Gebouwen, Kadaster)
 * Horecagelegenheden (bron: &copy; OpenStreetMap-auteurs)
+* Cameratoezicht in het A-kwartier (bron: Gemeente Groningen)
+* Coffeeshops (bron: Gemeente Groningen)
+* (Ontheffingen) vergunningen drank- en horeca (bron: Gemeente Groningen)
+* Slaaphuizen en methadonposten (bron: Gemeente Groningen)
+
    
 Het zijn in alle gevallen gezipte shape-bestanden in EPSG:3857 ('de Google projectie').
 
