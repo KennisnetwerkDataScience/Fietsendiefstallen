@@ -18,7 +18,7 @@ Het gaat om de volgende datasets in de map [data](https://github.com/Kennisnetwe
 * Fietstelweek 2016 (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
 
    
-Het zijn in alle gevallen gezipte shape-bestanden in EPSG:3857 ('de Google projectie').
+Het zijn in alle gevallen gezipte shape-bestanden in EPSG:4326 (WGS84).
 
 Naast de gegevens wordt ook code in Python en R beschikbaar gesteld om de gegevens op een snelle en eenvoudige manier in te lezen.
 
