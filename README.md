@@ -12,6 +12,8 @@ Het gaat om de volgende datasets in de map [data](https://github.com/Kennisnetwe
 * Coffeeshops (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
 * (Ontheffingen) vergunningen drank- en horeca (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
 * Slaaphuizen en methadonposten (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
+* Wijkindeling (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
+* Buurtindeling (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
 
    
 Het zijn in alle gevallen gezipte shape-bestanden in EPSG:3857 ('de Google projectie').
