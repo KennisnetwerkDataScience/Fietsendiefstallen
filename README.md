@@ -6,7 +6,7 @@ Het gaat om de volgende datasets in de map [data](https://github.com/Kennisnetwe
 * Wijkkaart 2017 (bron: CBS, [CC BY](https://creativecommons.org/licenses/by/3.0/nl/)) [datasheet](https://www.cbs.nl/-/media/_pdf/2017/36/2017ep37%20toelichting%20wijk%20en%20buurtkaart%202017.pdf)
 * Buurtkaart 2017 (bron: CBS, [CC BY](https://creativecommons.org/licenses/by/3.0/nl/)) [datasheet](https://www.cbs.nl/-/media/_pdf/2017/36/2017ep37%20toelichting%20wijk%20en%20buurtkaart%202017.pdf)
 * Bushaltes in de gemeente Groningen (bron: NDOV, [CC 0](https://creativecommons.org/publicdomain/zero/1.0/deed.nl)). Het veld `bicylepar` (`Y`/`N`) geeft aan of er een fietsenstalling bij de bushalte aanwezig is.
-* Openbare verlichting (bron: [Dataplatform.nl](https://ckan.dataplatform.nl/dataset/ovl-groningen), Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
+* Openbare verlichting (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
 * Verblijfsobjecten (bron: Basisregistratie Adressen en Gebouwen, Kadaster, [Public Domain Mark](https://creativecommons.org/publicdomain/mark/1.0/deed.nl))
 * Horecagelegenheden (bron: &copy; OpenStreetMap-auteurs)
 * Cameratoezicht in het A-kwartier (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
