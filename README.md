@@ -9,12 +9,12 @@ Het gaat om de volgende datasets in de map [data](https://github.com/Kennisnetwe
 * Openbare verlichting (bron: [Dataplatform.nl](https://ckan.dataplatform.nl/dataset/ovl-groningen), Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
 * Verblijfsobjecten (bron: Basisregistratie Adressen en Gebouwen, Kadaster, [Public Domain Mark](https://creativecommons.org/publicdomain/mark/1.0/deed.nl))
 * Horecagelegenheden (bron: &copy; OpenStreetMap-auteurs)
-* Cameratoezicht in het A-kwartier (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
-* Coffeeshops (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
-* (Ontheffingen) vergunningen drank- en horeca (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
-* Slaaphuizen en methadonposten (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
-* Wijkindeling (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
-* Buurtindeling (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente_groningen.pdf))
+* Cameratoezicht in het A-kwartier (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
+* Coffeeshops (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
+* (Ontheffingen) vergunningen drank- en horeca (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
+* Slaaphuizen en methadonposten (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
+* Wijkindeling (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
+* Buurtindeling (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
 
    
 Het zijn in alle gevallen gezipte shape-bestanden in EPSG:3857 ('de Google projectie').
