@@ -1,0 +1,61 @@
+---
+title: "Dataset fietsendiefstallen"
+output: html_notebook
+---
+
+
+```{r, echo=F, eval=F, include=F}
+library(readxl)
+library(dplyr)
+library(knitr)
+bvh <- read_excel('~/Downloads/Diefstal fiets Groningen stad vanaf 2013.xlsx')
+```
+
+## Dataset
+
+De dataset komt uit Basisvoorziening Handhaving (BVH) en betreft art. 8 informatie volgens de Wet Politiegegevens (WPG). De dataset bevat alle fietsendiefstallen in de stad Groningen van 1 januari 2012 tot en met 21 september 2017. Dit zijn er in totaal 15.947. Het gaat hier om zogenaamde incidenten. Er hoeft niet altijd sprake te zijn van een aangifte (als de melder dat bijvoorbeeld niet wil). In totaal is er 15.185 keer aangifte gedaan en 762 keer niet. De dataset bevat zelf geen geometrie, in de zin van polygonen die de genoemde gebieden afbakenen. Wel zijn er Rijksdriehoekcoördinaten toegekend aan incidenten.
+
+## Variabelen dataset
+
+Variabele | Omschrijving
+---|---------------------------------------------------------------------------------------
+Incident identificatie  | Unieke incident incident
+Bronregistratie         | Unieke identifier Bron (kan meerdere incidenten bevatten)
+Incidentsoort code      | INP* Code voor type incident (fietsendiefstal = A72)
+Incidentsoort           | Omschrijving incident (in dit geval altijd "Diefstal Fiets")
+Pleegstraatnaam         | Straat incident
+Pleeghuisnummer met toev. | Huisnummer incident
+Pleegpostcode           | Postcode (PC6) incident
+Pleeggemeente           | Gemeente incident
+Pleegprovincie          | Provincie incident
+Pleegwijk               | Wijk incident
+Pleegbuurt              | Buurt incident
+Pleegsubbuurt           | Subbuurt incident (== buurt incident)
+Begin-pleegdag          | Dagsoort obv Begin-pleegdatum/tijd
+Begin-pleegdagdeel      | Dagdeel obv Begin-pleegdatum/tijd
+Begin-pleegdatum/tijd   | Begindatum en tijd incident** 
+Eind-pleegdag           | Dagsoort obv Eind-pleegdatum/tijd
+Eind-pleegdagdeel       | Dagdeel obv Eind-pleegdatum/tijd
+Eind-pleegdatum/tijd    | Einddatum en tijd incident** 
+Kennisnamedag           | Dagsoort obv van Kennisnamedatum/tijd 
+Kennisnamedagdeel       | Dagdeel obv Kennisnamedatum/tijd 
+Kennisnamedatum/tijd    | Datum en tijd van moment waarop politie kennis nam van het incident
+Aangifte                | Is er aangifte gedaan
+Poging                  | Gaat het om een voltooide diefstal of poging
+Verdachten              | Aantal verdachten in beeld
+Aanhoudingen            | Is er een aanhouding verricht
+Opgehelderd             | Is de zaak opgehelderd (== is er een verdachte in beeld)
+Object                  | Type object (Openbare weg, Erf, Portiek enz.)
+Project(en)             | Is het incident toegewezen aan een project (Studenten, Mobiel banditisme enz)
+Temperatuur             | Temperatuur ttv het incident (meetstation onbekend)
+Weer                    | Weertype ttv het incident 
+X                       | Rijksdriehoek X-coördinaat incident
+Y                       | Rijksdriehoek Y-coördinaat incident
+
+
+*\* INP = Informatie Nederlandse Politie*
+
+*\*\* Aangever kan begin en eindtiijd opgeven waartussen fiets gestolen is*
+    
+    
+
