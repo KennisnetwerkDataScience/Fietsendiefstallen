@@ -1,4 +1,5 @@
-Deze repository bevat gegevens die gebruikt kunnen worden om de gegevens van fietsendiefstallen te verrijken om zo analyses te kunnen doen of visualisaties te maken die leiden tot nieuwe inzichten.
+Deze repository bevat gegevens van fietsendiefstallen in de stad Groningen. Er is een [datasheet](../master/doc/Uitleg%20data.Rmd) beschikbaar met een beschrijving van de dataset.  
+Daarnaast staan er in deze repository datasets die gebruikt kunnen worden om de gegevens van fietsendiefstallen te verrijken. 
 
 Het gaat om de volgende datasets in de map [data](https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/tree/master/data):
 * Postcodegebieden (bron: ESRI NL, Kadaster, [CC BY](https://creativecommons.org/licenses/by/3.0/nl/))
