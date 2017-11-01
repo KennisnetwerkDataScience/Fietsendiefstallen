@@ -55,7 +55,7 @@ Y                       | Rijksdriehoek Y-coördinaat incident
 
 *\* INP = Informatie Nederlandse Politie*
 
-*\*\* Aangever kan begin en eindtiijd opgeven waartussen fiets gestolen is*
+*\*\* Aangever kan begin en eindtijd opgeven waartussen fiets gestolen is*
     
     
 
