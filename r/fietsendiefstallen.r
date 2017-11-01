@@ -86,6 +86,9 @@ diefstallen <- read_excel('./data/Diefstal fiets Groningen stad vanaf 2013.xlsx'
                st_join(buurten, left = TRUE) %>%
                rename(wijk = naam.x, buurt = naam.y)
 
+attr(diefstallen$begin, "tzone") <- "Europe/Amsterdam"
+attr(diefstallen$eind, "tzone") <- "Europe/Amsterdam"
+
 # Eenvoudig plotje
 plot(wijken,  main = 'Fietsdiefstallen', col = sf.colors(nrow(wijken), categorical = TRUE))
 plot(diefstallen, pch = 1, cex = 0.5, col = 1, add = TRUE)
@@ -102,8 +105,8 @@ plot(stadsgrens, main = 'Fietsdiefstallen buiten de stad', col = 'lightgreen')
 plot(diefstallen[stadsgrens, op = st_disjoint], pch = 20, cex = 2, col = 'red', add = TRUE)
 # Er is een aantal diefstallen nabij Transferium Hoogkerk dat net buiten de stad valt.
 
-# Hebben de pubs in OpenStreetMap op basis van hun lokatie ook een match in het bestand met drank- en horecavergunningen?
-selectie <- st_is_within_distance(pubs, vergunningen, dist = 25)  # Binnen 25 meter zoeken naar een match
+# Hebben de pubs in OpenStreetMap een match met drank- en horecavergunningen (binnen 25 meter)?
+selectie <- st_is_within_distance(pubs, vergunningen, dist = 25)  
 summary(lengths(selectie) > 0) # Slechts 10 matches...
 print(st_join(pubs, vergunningen, st_is_within_distance, dist = 25) %>% 
       filter(!is.na(omschrijving)) %>% 
@@ -120,14 +123,15 @@ pubs$vergunning <-  sapply(1:nrow(pubs), function(x) vergunningen$omschrijving[w
 
 # Voor iedere diefstal de afstand tot de dichtstbijzijnde bushalte
 # LET OP: HET UITVOEREN VAN ONDERSTAANDE REGEL CODE KAN VEEL TIJD KOSTEN!
-diefstallen$afstand_tot_bushalte <- sapply(1:nrow(diefstallen), function(x) min(st_distance(diefstallen[x,], bushaltes)))
-min(diefstallen$afstand_tot_bushalte)
-max(diefstallen$afstand_tot_bushalte)
+# diefstallen$afstand_tot_bushalte <- sapply(1:nrow(diefstallen), function(x) min(st_distance(diefstallen[x,], bushaltes)))
+# min(diefstallen$afstand_tot_bushalte)
+# max(diefstallen$afstand_tot_bushalte)
 
 # Het aantal diefstallen per buurt
-aantal_per_buurt <- as.data.frame(cbind(aantal = lengths(st_covers(buurten, diefstallen)), naam = buurten$naam), stringsAsFactors = FALSE)
-buurten_xl <- inner_join(buurten, aantal_per_buurt, by = 'naam') %>% mutate(aantal = as.numeric(aantal))
-ggplot(buurten_xl) + geom_sf(aes(fill = aantal))
+aantal_per_buurt <- data.frame(aantal = lengths(st_covers(buurten, diefstallen)), naam = buurten$naam, stringsAsFactors = FALSE) %>%
+                    inner_join(buurten, by = 'naam') %>% 
+                    mutate(aantal = as.numeric(aantal)) 
+ggplot(aantal_per_buurt) + geom_sf(aes(fill = aantal))
 
 # Choropleet
 ggplot(buurten_xl) +
@@ -165,3 +169,26 @@ buurten_xl %>%
             title = NULL,
             position = "bottomright") %>%
   addProviderTiles(providers$CartoDB.Positron)
+
+# Hoe zijn diefstallen verdeeld over weekdagen?
+diefstallen <- diefstallen %>%
+               mutate(b_datum = as.Date(begin), e_datum = as.Date(eind))
+
+m <- sapply(1:nrow(diefstallen), function(x) {
+       rij <- sapply(0:6, function(weekdag) {
+                weekdag %in% strftime(seq(diefstallen$b_datum[x], diefstallen$e_datum[x], by = 'day'), format = '%w')
+              })
+       rij <- rij/sum(rij)
+})
+
+aantal_per_weekdag <- data.frame(weekdag = c('zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'), aantal = apply(m, 1, sum)) 
+
+ggplot(aantal_per_weekdag, aes(x = weekdag, y = aantal, fill = weekdag)) +
+       geom_bar(stat = "identity") +
+       guides(fill = FALSE) + 
+       xlab("Dag van de week") + 
+       ylab("Totaal aantal") +
+       scale_x_discrete(limits = aantal_per_weekdag$weekdag) +
+       scale_y_continuous(limits = c(0, 2500), breaks = c(0, 500, 1000, 1500, 2000, 2500)) +
+       ggtitle("Fietsendiefstallen in Groningen") +
+       theme(plot.title = element_text(hjust = 0.5)) 
