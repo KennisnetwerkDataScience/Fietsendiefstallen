@@ -2,6 +2,7 @@ Deze repository bevat gegevens van fietsendiefstallen in de stad Groningen. Er i
 Daarnaast staan er in deze repository datasets die gebruikt kunnen worden om de gegevens van fietsendiefstallen te verrijken. 
 
 Het gaat om de volgende datasets in de map [data](https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/tree/master/data):
+* Fietsendiefstallen in Groningen in de periode 2013-2017 (bron: politie Groningen)
 * Postcodegebieden (bron: ESRI NL, Kadaster, [CC BY](https://creativecommons.org/licenses/by/3.0/nl/))
 * 100 meter vierkantstatistieken uit 2014 (bron: CBS, [CC BY](https://creativecommons.org/licenses/by/3.0/nl/)) [datasheet](https://www.cbs.nl/-/media/imported/documents/2014/44/statistische%20gegevens%20per%20vierkant%20update%20oktober%202014.pdf?la=nl-nl)
 * Wijkkaart 2017 (bron: CBS, [CC BY](https://creativecommons.org/licenses/by/3.0/nl/)) [datasheet](https://www.cbs.nl/-/media/_pdf/2017/36/2017ep37%20toelichting%20wijk%20en%20buurtkaart%202017.pdf)
@@ -19,7 +20,7 @@ Het gaat om de volgende datasets in de map [data](https://github.com/Kennisnetwe
 * Fietstelweek 2016 (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
 
    
-Het zijn in alle gevallen gezipte shape-bestanden in EPSG:4326 (WGS84).
+Het bestand met fietsendiefstallen is een Excel-bestand. In alle gevallen zijn het gezipte shape-bestanden in EPSG:4326 (WGS84).
 
 Naast de gegevens wordt ook code in Python en R beschikbaar gesteld om de gegevens op een snelle en eenvoudige manier in te lezen.
 
