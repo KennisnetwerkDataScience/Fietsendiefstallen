@@ -1,1 +1,186 @@
+---
+title: "Fietsendiefstallen"
+author: "Willy Bakker"
+date: "4 november 2017"
+output: html_document
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Fietsendiefstalgegevens
+
+Dit document bevat voorbeeldcode voor het inlezen, verrijken, analyseren en visualiseren van fietsendiefstalgegevens van de politie Groningen.
+
+De bronbestanden zijn gepubliceerd in de volgende GitHub repository: <http://www.github.com/KennisnetwerkDataScience/fietsendiefstallen>.
+
+Het gaat om geografische gegevens. Voor meer informatie over hoe je omgaat met geografische gegevens in R kun je de volgende bronnen raadplegen:  
+* [Geocomputation with R](http://robinlovelace.net/geocompr/)  
+* [Spatial Data in R: New Directions](https://edzer.github.io/UseR2017/)  
+* [Spatial Data in R: New Directions - video](https://channel9.msdn.com/Events/useR-international-R-User-conferences/useR-International-R-User-2017-Conference/Spatial-data-in-R-new-directions)  
+* [Geospatial visualization using R](https://bhaskarvk.github.io/user2017.geodataviz/)  
+* [Geospatial visualization using R - video 1](https://channel9.msdn.com/Events/useR-international-R-User-conferences/useR-International-R-User-2017-Conference/Geospatial-visualization-using-R)  
+* [Geospatial visualization using R - video 2](https://channel9.msdn.com/Events/useR-international-R-User-conferences/useR-International-R-User-2017-Conference/Geospatial-visualization-using-R-II)  
+* [Interactive Data Visualisation with R (and just R) ](https://github.com/martinjhnhadley/2017-odsc-interactive-viz-with-R)  
+* [Leaflet for R](https://rstudio.github.io/leaflet/choropleths.html)  
+
+Installeer packages en laad libraries.
+```{r, warning = FALSE, message = FALSE}
+install.packages("devtools", repos = "http://cran.us.r-project.org",quiet = TRUE)
+devtools::install_github("tidyverse/ggplot2", repos = "http://cran.us.r-project.org", quiet = TRUE)
+install.packages("tidyverse", repos = "http://cran.us.r-project.org", quiet = TRUE)
+install.packages("sf", repos = "http://cran.us.r-project.org", quiet = TRUE)
+install.packages("leaflet.extras", repos = "http://cran.us.r-project.org", quiet = TRUE)
+
+library(tidyverse)
+library(readxl)
+library(sf)
+library(leaflet.extras)
+```
+
+Lees de datasets in.
+```{r message = FALSE}
+download_file <- function(url, zipped = TRUE) {
+  wd <- getwd()
+  td <- tempdir()
+  setwd(td)
+  temp <- tempfile(fileext = ".zip")
+  download.file(url, temp)
+  unzip(temp)
+  data <- read_sf(dir(tempdir(), "*.shp$"))
+  unlink(dir(td))
+  setwd(wd)
+  return(data)
+}
+
+bushaltes <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/bushaltes.zip') %>% 
+             mutate(fietsenrek = ifelse(bicyclepar == 'true', TRUE, FALSE)) %>%
+             select(haltenr = quaycode, haltenaam = quayname, fietsenrek) %>% 
+             st_transform(28992) 
+
+buurten <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/buurt2017.zip') %>% 
+           select(naam = BU_NAAM) %>% 
+           st_transform(28992) 
+
+pubs <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/horeca.zip') %>% 
+        filter(horecatype == 'pub') %>% 
+        select(naam) %>% 
+        st_transform(28992) 
+
+vergunningen <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/onth_verg_drank_en_horeca.zip') %>% 
+                filter(TYPE == 'Drank- en Horecavergunning') %>% 
+                select(omschrijving = OMSCHRIJVI) %>% 
+                st_transform(28992) 
+
+wijken <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/wijk2017.zip') %>% 
+          select(naam = WK_NAAM) %>% 
+          st_transform(28992) 
+
+diefstallen <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/diefstallen.zip') %>% 
+              st_transform(28992) %>%
+               select(id, b_datum, e_datum, object, temp, weer) %>%
+               mutate(begin = as.POSIXct(b_datum, format = "%Y%m%d%H%M%S", tz = "Europe/Amsterdam"), 
+                      eind  = as.POSIXct(e_datum, format = "%Y%m%d%H%M%S", tz = "Europe/Amsterdam"),
+                      temp = as.numeric(ifelse(temp == "n/a", NA, temp)),
+                      weer = ifelse(weer == "Geen data aanwezig", NA, weer)) %>% 
+               st_join(wijken, left = TRUE) %>%
+               st_join(buurten, left = TRUE) %>%
+               rename(wijk = naam.x, buurt = naam.y)
+```
+
+Maak een eenvoudig kaartje van het aantal diefstalen. Voeg ook de wijkgrenzen toe.
+```{r message = FALSE}
+plot(wijken$geometry,  col = sf.colors(nrow(wijken), categorical = TRUE))
+plot(diefstallen$geometry, pch = 1, cex = 0.5, col = 1, add = TRUE)
+```
+
+Maak een kaartje van alle diefstallen in de Bloemenbuurt.  
+```{r message = FALSE}
+wijkgrens_bloemenbuurt <- buurten %>% filter(naam == "Bloemenbuurt")
+diefstallen_bloemenbuurt <- diefstallen[wijkgrens_bloemenbuurt, ]
+plot(wijkgrens_bloemenbuurt$geometry, col = 'lightblue')
+plot(diefstallen_bloemenbuurt$geometry, add = TRUE)
+```    
+
+Maak een kaartje van alle diefstallen die NIET in een wijk van Groningen gepleegd zijn.  
+```{r message = FALSE}
+stadsgrens <- st_union(wijken)
+diefstallen_buiten_stadsgrens <- diefstallen[stadsgrens, op = st_disjoint]
+plot(stadsgrens, col = 'lightgreen')
+plot(diefstallen_buiten_stadsgrens$geometry, pch = 20, cex = 2, col = 'red', add = TRUE)
+```    
+
+Er zijn `r nrow(diefstallen_buiten_stadsgrens)` diefstallen gepleegd vlakbij Transferium Hoogkerk, net buiten de stad.  
+
+Vind voor iedere pub in OpenStreetMap een match in het bestand met drank- en horecavergunningen van de gemeente binnen een straal van 25 meter.
+```{r message = FALSE}
+selectie <- st_is_within_distance(pubs, vergunningen, dist = 25)  
+```
+
+Er zijn slechts `r sum(lengths(selectie) > 0)` pubs met een match...    
+
+Geef een overzicht van de pubs met een match.    
+```{r message = FALSE}
+print(st_join(pubs, vergunningen, st_is_within_distance, dist = 25) %>% 
+      as.data.frame() %>%
+      filter(!is.na(omschrijving)) %>% 
+      select(openstreetmap = naam, vergunning = omschrijving)) 
+```    
+In de uitvoer verwacht je misschien `r sum(lengths(selectie) > 0)` regels, maar het zijn er `r nrow(st_join(pubs, vergunningen, st_is_within_distance, dist = 25) %>% filter(!is.na(omschrijving)))`. Pub 'Mulder' komt twee keer voor, omdat er twee matches zijn in het vergunningenbestand binnen een straal van 25 meter.
+
+Bereken voor iedere pub de dichtsbijzijnde match in het vergunningenbestand en print ter illustratie de eerste zes rijen uit de resultaatset.
+```{r message = FALSE}
+pubs$vergunning <- sapply(1:nrow(pubs), function(x) vergunningen$omschrijving[which.min(st_distance(pubs[x,], vergunningen))])
+pubs %>% as.data.frame() %>% select(naam, vergunning) %>% head() %>% print()
+```
+
+Geef voor iedere diefstal de afstand van de locatie tot de dichtstbijzijnde bushalte.    
+LET OP: HET UITVOEREN VAN ONDERSTAANDE REGEL CODE KAN VEEL TIJD KOSTEN!    
+```{r message = FALSE}
+diefstallen$afstand_tot_bushalte <- sapply(1:nrow(diefstallen), function(x) min(st_distance(diefstallen[x,], bushaltes)))
+```
+De kleinste afstand is `r round(min(diefstallen$afstand_tot_bushalte), 0)` en de grootste `r round(max(diefstallen$afstand_tot_bushalte), 0)` meter.
+
+Maak choropleet met het aantal diefstallen per buurt.
+```{r message = FALSE}
+buurten$aantal <- lengths(st_covers(buurten, diefstallen))
+
+ggplot(buurten) +
+  geom_sf(aes(fill = aantal)) +
+  ggtitle("Diefstallen per buurt") + 
+  theme(axis.text.x = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(),
+        rect = element_blank(),
+        plot.title = element_text(hjust = 0.5))
+```
+
+Bepaal de kwartielen van de diefstallen per buurt.
+```{r message = FALSE}
+quantile(buurten$aantal)
+```
+
+Maak een interactieve kaart met het aantal diefstallen per buurt.     
+```{r message = FALSE}
+pal <- colorBin("Reds", domain = buurten$aantal, bins = c(0, 5, 50, 500, 1000, 2500))
+
+buurten %>% 
+  st_transform(4326) %>%
+  leaflet() %>%
+  addPolygons(fillColor = ~pal(aantal),
+              weight = 1,
+              color = "#000000",
+              fillOpacity = 0.7,
+              label = ~(paste0(naam, ': ', aantal)),
+              highlight = highlightOptions(weight = 5,
+                                           color = "yellow",
+                                           fillOpacity = 0.7,
+                                           bringToFront = TRUE)) %>%
+  addLegend(pal = pal, 
+            values = ~aantal, 
+            opacity = 0.7, 
+            title = NULL,
+            position = "bottomright") %>%
+  addProviderTiles(providers$CartoDB.Positron)
+```
