@@ -21,5 +21,5 @@ Neem bij vragen of voor meer informatie over het Tableau Workbook contact op met
 [Meldingen per dag](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Meldingdag)     
 [Aantal dagen per maand met aantal meldingen](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/DagenMetMeldingen)    
 [Aantal dagen met aantal meldingen per maand](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Meldingenpdpm)    
-[Mont YoY](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/MonthYoY)    
+[Month YoY](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/MonthYoY)    
 [Trend](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Trend)    
