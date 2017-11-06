@@ -22,6 +22,6 @@ Het gaat om de volgende datasets in de map [data](https://github.com/Kennisnetwe
    
 Het bestand met fietsendiefstallen is een Excel-bestand. Het wordt -net als alle overige bronbestanden- ook als gezipt shape-bestand in EPSG:4326 (WGS84) beschikbaar gesteld.
 
-Naast de gegevens staat in de repository ook code [Python](https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/tree/master/python) en [R](https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/tree/master/r) code om de gegevens op een snelle en eenvoudige manier in te lezen.
+Naast de gegevens staat in de repository ook[Python](https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/tree/master/python), [Tableau](https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/tree/master/tableau) en [R](https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/tree/master/r) code om de gegevens op een snelle en eenvoudige manier in te lezen.
 
 In de map [etl](https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/tree/master/etl) vind je de spatial ETL-scripts die gebruikt zijn om de datasets klaar te zetten. De scripts zijn gebouwd in FME Desktop 2017.
