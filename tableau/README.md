@@ -17,9 +17,9 @@ https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/PDWeekda
 https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/PerDayHeatMap
 https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Heatmap
 https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/BWweekdag
-[box and whisker plot](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/BWjaar)
-[Meldingen per dag](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Meldingdag)
-[Aantal dagen per maand met aantal meldingen](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/DagenMetMeldingen)
-[Aantal dagen met aantal meldingen per maand](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Meldingenpdpm)
-[Mont YoY](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/MonthYoY)
-[Trend](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Trend)
+[box and whisker plot](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/BWjaar)    
+[Meldingen per dag](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Meldingdag)     
+[Aantal dagen per maand met aantal meldingen](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/DagenMetMeldingen)    
+[Aantal dagen met aantal meldingen per maand](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Meldingenpdpm)    
+[Mont YoY](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/MonthYoY)    
+[Trend](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Trend)    
