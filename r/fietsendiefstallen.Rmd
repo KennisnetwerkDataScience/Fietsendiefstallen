@@ -78,10 +78,10 @@ wijken <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendief
           st_transform(28992) 
 
 diefstallen <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/diefstallen.zip') %>% 
-              st_transform(28992) %>%
+               st_transform(28992) %>%
                select(id, b_datum, e_datum, object, temp, weer) %>%
-               mutate(begin = as.POSIXct(b_datum, format = "%Y%m%d%H%M%S", tz = "Europe/Amsterdam"), 
-                      eind  = as.POSIXct(e_datum, format = "%Y%m%d%H%M%S", tz = "Europe/Amsterdam"),
+               mutate(begin = as.POSIXct(paste(b_datum, '000000'), format = "%Y%m%d%H%M%S", tz = "Europe/Amsterdam"), 
+                      eind  = as.POSIXct(paste(e_datum, '000000'), format = "%Y%m%d%H%M%S", tz = "Europe/Amsterdam"),
                       temp = as.numeric(ifelse(temp == "n/a", NA, temp)),
                       weer = ifelse(weer == "Geen data aanwezig", NA, weer)) %>% 
                st_join(wijken, left = TRUE) %>%
@@ -182,5 +182,75 @@ buurten %>%
             opacity = 0.7, 
             title = NULL,
             position = "bottomright") %>%
+  addProviderTiles(providers$CartoDB.Positron)
+```
+
+Beantwoord de vraag hoe het aantal diefstallen over de weekdagen is verdeeld.     
+De datum waarop de diefstal is gepleegd is niet altijd bekend. Vaak verschillen de begin- en einddatum van de 'pleegperiode'. Hoe ga je hiermee om?    
+Je zou bijvoorbeeld een wegingsfactor kunnen toepassen, zodat je in totaal (voor alle dagen in de pleegperiode) op 1 komt.   
+```{r message = FALSE}
+diefstallen <- mutate(diefstallen, b_datum = as.Date(begin), e_datum = as.Date(eind))
+
+m <- sapply(1:nrow(diefstallen), function(x) {
+       f <- sapply(0:6, function(weekdag) {
+                weekdag %in% strftime(seq(diefstallen$b_datum[x], diefstallen$e_datum[x], by = 'day'), format = '%w')
+              })
+       f <- f/sum(f) 
+})
+
+aantal_per_weekdag <- data.frame(weekdag = c('zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'), aantal = apply(m, 1, sum)) 
+
+ggplot(aantal_per_weekdag, aes(x = weekdag, y = aantal)) +
+       geom_bar(stat = "identity") +
+       scale_x_discrete(limits = aantal_per_weekdag$weekdag) +
+       scale_y_continuous(limits = c(0, 2500), breaks = c(0, 500, 1000, 1500, 2000, 2500)) +
+       ggtitle("Fietsendiefstallen in Groningen") +
+       theme(plot.title = element_text(hjust = 0.5)) 
+```
+
+Maak een grafiek van de diefstallen in de tijd.  
+```{r message = FALSE}
+diefstallen <- diefstallen %>% mutate(p = as.numeric(e_datum - b_datum), f = 1/(1 + p))
+datum <- seq(min(diefstallen$b_datum), max(diefstallen$e_datum), by = 'day')
+
+t1 <- sapply(datum, function(x) sum(diefstallen$b_datum <= x & diefstallen$e_datum >= x)) %>%
+      data.frame(datum = datum, aantal = .)
+
+qplot(x = datum, 
+      y = aantal,
+      data = t1, 
+      na.rm = TRUE,
+      main = "Fietsendiefstallen in Groningen\n 2013-2017",
+      xlab = "Datum", 
+      ylab = "Aantal")
+
+t2 <- sapply(datum, function(x) sum(diefstallen$f[diefstallen$b_datum <= x & diefstallen$e_datum >= x])) %>%
+      data.frame(datum = datum, aantal_gewogen = .) 
+
+qplot(x = datum, 
+      y = aantal_gewogen,
+      data = t2, 
+      na.rm = TRUE,
+      main = "Fietsendiefstallen in Groningen\n 2013-2017",
+      xlab = "Datum", 
+      ylab = "Aantal (gewogen)")
+
+t <- inner_join(t1, t2)
+```
+
+Bepaal op welke dag de meeste diefstallen werden gepleegd.
+```{r message = FALSE}
+t <- inner_join(t1, t2)
+d <- t$datum[which.max(t$aantal_gewogen)]
+```
+De meeste diefstallen werden gepleegd op `r d`.
+
+Maak een kaartje van de locaties waar fietsen werden gestolen op `r d`.
+```{r message = FALSE}
+diefstallen %>% 
+  filter(b_datum <= d & d <= e_datum) %>%
+  st_transform(4326) %>%
+  leaflet() %>%
+  addMarkers() %>%
   addProviderTiles(providers$CartoDB.Positron)
 ```
