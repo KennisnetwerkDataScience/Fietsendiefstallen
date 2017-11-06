@@ -12,7 +12,7 @@ Neem bij vragen of voor meer informatie over het Tableau Workbook contact op met
 [Frequentiediagram pleegduur (dagen)](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/DuurTabel)    
 [PDuurCum Log](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/PDuurCumLog)    
 [Frequentieverdeling totaal aantal records (366) met een 'pleegduur' > 6 dagen](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/PDLang)    
-[](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/PDPerWeekdag)    
+[PDPerWeekdag](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/PDPerWeekdag)    
 [Aantal meldingen per weekdag](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/PDWeekdag)    
 [Per day heatmap 2014](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/PerDayHeatMap)       
 [Heatmap](https://public.tableau.com/profile/louiswitte#!/vizhome/FietsenDiefstal/Heatmap)     
