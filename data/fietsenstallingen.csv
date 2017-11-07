@@ -1,0 +1,12 @@
+Naam;Soort;Straat;Huisnummer;Postcode;Plaats;Capaciteit;Beheerder;Opmerking;lat;lon
+Euroborg;Bewaakte stalling;;;;Groningen;750;Gemeente Groningen;Alleen bij wedstrijden en evenementen;53,2071730;6,58839800
+Fietsenstalling Europapark;Stalling met toezicht;Boumaboulevard;;9723 ZS;Groningen;750;WerkPro;;53,20630900;6,588171
+Fietsenstalling Oude Boteringestraat;Stalling met toezicht;Oude Boteringestraat;16;9712 GH;Groningen;725;WerkPro;;53,2190643;6,56242010
+Haddingestraat (parkeergarage);Bewaakte stalling;Haddingestraat;;9711 KA;Groningen;80;WerkPro;;53,2167430;6,56560200
+Papiermolen;Bewaakte stalling;Papiermolenlaan;2;9721 GR;Groningen;1100;Gemeente Groningen;Alleen geopend bij + 25 graden Celsius;53,2039440;6,57067000
+Pathé;Bewaakte stalling;Ruiterstraat;1;9711 CD;Groningen;250;WerkPro;;53,2141434;6,56430400
+Peperstraat;Bewaakte stalling;Peperstraat;35;9711 PC;Groningen;200;WerkPro;Ook nachtstalling;53,2171310;6,57118300
+Stadsbalkon;Stalling met toezicht;Stationsplein;1;9726 AE;Groningen;5500;WerkPro;;53,2109818;6,56188560
+Station Groningen Europapark;Bewaakte stalling;Helperpark;;;Groningen;Onbekend;Gemeente Groningen;;53,2056600;6,58426500
+Station Groningen / Stationsrijwielshop Kuis;Bewaakte stalling;Stationsweg;13;9726 AC;Groningen;Onbekend;NS Fiets;;53,2110200;6,56620000
+UMCG;Bewaakte stalling;Hanzeplein;1;9713 GZ;Groningen;800;Gemeente Groningen;;53,2218550;6,57735100
