@@ -19,6 +19,7 @@ Het gaat om de volgende datasets in de map [data](https://github.com/Kennisnetwe
 * Buurtindeling (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
 * Fietstelweek 2016 (bron: Gemeente Groningen, [licentievoorwaarden en disclaimer](../master/doc/licentievoorwaarden_disclaimer_gemeente.md))
 * Fietsenstallingen (bron: [VeiligStallen.nl](https://www.veiligstallen.nl/groningen/stallingen). Dit is geen shape, maar een csv-bestand.
+* Fietsendiefstallen verrijkt met buurtnummer, aangemaakt door Erik Duisterwinkel. De verrijkte dataset wordt gebruikt in timeanalysis.py, een voorbeeldscript dat je terug kunt vinden in de python map.
 
    
 Het bestand met fietsendiefstallen is een Excel-bestand. Het wordt -net als alle overige bronbestanden- ook als gezipt shape-bestand in EPSG:4326 (WGS84) beschikbaar gesteld.
