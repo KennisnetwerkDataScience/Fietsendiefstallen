@@ -3,7 +3,7 @@ Daarnaast staan er in deze repository datasets die gebruikt kunnen worden om de 
 
 Het gaat om de volgende datasets in de map [data](https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/tree/master/data):
 * Fietsendiefstallen in Groningen in de periode 2013-2017 (bron: politie Groningen)
-* Eigenschappen van gestolen fietsen (csv-bestand, bron: politie Groningen). Met de waarde in de kolom id kun je iedere regel in dit bestand koppelen aan een diefstal in het bovengenoemde Excel-bestand. 
+* Eigenschappen van gestolen fietsen (csv-bestand, bron: politie Groningen). Met de waarde in de kolom `id` kun je iedere regel in dit bestand koppelen aan een diefstal in het bovengenoemde Excel-bestand. 
 * Postcodegebieden (bron: ESRI NL, Kadaster, [CC BY](https://creativecommons.org/licenses/by/3.0/nl/))
 * 100 meter vierkantstatistieken uit 2014 (bron: CBS, [CC BY](https://creativecommons.org/licenses/by/3.0/nl/)) [datasheet](https://www.cbs.nl/-/media/imported/documents/2014/44/statistische%20gegevens%20per%20vierkant%20update%20oktober%202014.pdf?la=nl-nl)
 * Wijkkaart 2017 (bron: CBS, [CC BY](https://creativecommons.org/licenses/by/3.0/nl/)) [datasheet](https://www.cbs.nl/-/media/_pdf/2017/36/2017ep37%20toelichting%20wijk%20en%20buurtkaart%202017.pdf)
