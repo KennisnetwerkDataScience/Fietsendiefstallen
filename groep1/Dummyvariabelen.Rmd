@@ -1,0 +1,179 @@
+---
+title: "Dummyvariabelen voor clusteranalyses"
+author: "Gerard Wolters"
+date: "8 november 2017"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Inladen datasets
+
+Eerst worden de datasets ingeladen obv notebook van Willy
+
+```{r message = FALSE, warning = FALSE}
+library(sf)
+library(tidyverse)
+library(leaflet)
+library(lubridate)
+
+download_file <- function(url, zipped = TRUE) {
+  wd <- getwd()
+  td <- tempdir()
+  setwd(td)
+  temp <- tempfile(fileext = ".zip")
+  download.file(url, temp)
+  unzip(temp)
+  data <- read_sf(dir(tempdir(), "*.shp$"))
+  unlink(dir(td))
+  setwd(wd)
+  return(data)
+}
+
+bushaltes <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/bushaltes.zip') %>% 
+             mutate(fietsenrek = ifelse(bicyclepar == 'true', TRUE, FALSE)) %>%
+             select(haltenr = quaycode, haltenaam = quayname, fietsenrek) %>% 
+             st_transform(28992) 
+
+buurten <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/buurt2017.zip') %>% 
+           select(naam = BU_NAAM) %>% 
+           st_transform(28992) 
+
+pubs <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/horeca.zip') %>% 
+        filter(horecatype == 'pub') %>% 
+        select(naam) %>% 
+        st_transform(28992) 
+
+vergunningen <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/onth_verg_drank_en_horeca.zip') %>% 
+                filter(TYPE == 'Drank- en Horecavergunning') %>% 
+                select(omschrijving = OMSCHRIJVI) %>% 
+                st_transform(28992) 
+
+wijken <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/wijk2017.zip') %>% 
+          select(naam = WK_NAAM) %>% 
+          st_transform(28992) 
+
+diefstallen <- download_file('https://github.com/KennisnetwerkDataScience/Fietsendiefstallen/raw/master/data/diefstallen.zip') %>% 
+               st_transform(28992) %>%
+               select(id, b_datum, e_datum, object, temp, weer) %>%
+               mutate(begin = as.POSIXct(paste(b_datum, '000000'), format = "%Y%m%d%H%M%S", tz = "Europe/Amsterdam"), 
+                      eind  = as.POSIXct(paste(e_datum, '000000'), format = "%Y%m%d%H%M%S", tz = "Europe/Amsterdam"),
+                      temp = as.numeric(ifelse(temp == "n/a", NA, temp)),
+                      weer = ifelse(weer == "Geen data aanwezig", NA, weer)) %>% 
+               st_join(wijken, left = TRUE) %>%
+               st_join(buurten, left = TRUE) %>%
+               rename(wijk = naam.x, buurt = naam.y)
+```
+
+
+# Dummyvariabelen maken
+
+Vervolgens wordt categorishce data (e.g. buurten, dagsoort enz) bewerkt tot dummyvariabelen. Dat houdt in dat de dataset van long naar wide wordt getransformeerd, zodandig de categorieën kolomnamen worden en per fietsendiefstal een 0 of een 1 als waarde krijgt voor elke categorie. Dat gebeurt met onderstaande functie, zie ook onderstaand voorbeeld.
+
+```{r}
+dummy <- function(df){
+  
+  # Gerard Wolters | Nationale Politie | eenheid Noord Nederland | DRIO | Analyse & Onderzoek
+  #
+  # Functie om dummyvariabelen te maken
+  # Eerste kolom is de key,
+  # de rest kolommen met categorische variabelen
+  # datatable wordt dmv data.table:: aangeroepen ivm masking lubridatefuncties
+
+  require(tidyr)
+  
+  # de (sticky) geometry van sf moet eruit als je dummies wil maken
+  # thanks to faridcher: https://github.com/r-spatial/sf/issues/371 
+  st_drop_geometry <- function(x) {
+    
+    if(inherits(x,"sf")) {
+      x <- st_set_geometry(x, NULL)
+      class(x) <- 'data.frame'
+      }
+    return(x)
+  }
+  
+  df %>%
+    st_drop_geometry() %>%
+    mutate_all(funs(ifelse(is.na(.), 'onbekend', .))) %>%
+    gather(key, val, -1) %>%
+    unite(val, key, val) %>%
+    mutate(count = 1) %>%
+    data.table::dcast(as.formula(paste0(names(df)[1], ' ~ val')), fun = sum) %>%
+    select(-dplyr::contains('onbekend'))
+  
+}
+```
+
+Nemen we de eerste 10 diefstallen en selecteren we `wijk` en `object` dan ziet een dummyset er als volgt uit:
+
+```{r}
+diefstallen %>% 
+  slice(1:10) %>%
+  select(id, wijk, object) %>%
+  dummy(.) %>% 
+  glimpse
+```
+
+### Dagsoort
+
+Maar eerst moeten we nagaan hoe we een dag definiëren (voor de gevallen waarvan we kunnen bepalen dat ze op een bepaalde dag zijn gepleegd). Groep 1 is van mening dat wanneer je op zaterdagavond uitgaat en je fiets die nacht gestolen wordt, dit bij de zaterdag hoort, terwijl je strikt genomen op zondag uit zou komen als je naar datum/tijdstip kijkt. Daarom definiëren we `begin_wdag` als de dag exlusief de bijbehorende nacht (0 tot 6 uur) en inclusief de daaropvolgende nacht (0 tot 6 uur). Bovendien kijken we welke diefstallen werkelijk op één dag terug zijn te brengen.
+
+```{r, message=FALSE, warning=FALSE}
+diefstal_dummy <- diefstallen %>% 
+  mutate(begin_plus = begin + days(1), 
+         zelfde_dag  = eind %within% interval(begin, begin_plus), 
+         begin_wdag = ifelse(hour(begin) < 6,
+                             as.character(wday(begin - days(1),
+                                               label = T,
+                                               abbr = F)),
+                             as.character(wday(begin,
+                                               label = T,
+                                               abbr = F))), 
+         wdag = wday(begin, 
+                     label = T, 
+                     abbr = F)) %>% 
+  filter(zelfde_dag) %>% 
+  select(id, buurt, begin_wdag) %>%
+  dummy()
+```
+
+Op deze manier kunnen er clusteranalyses gedaan worden. Hieronder een simpel voorbeeld mbv `kmeans` en het beperkte aantal dummyvariabelen dat nu aanwezig is, zegt nog niet zoveel dus. Wat onduidelijke kleuren, maar wel in de huisstijl van de Nationale Politie.:) Het grooste cluster is weggelaten voor de overzichtelijkheid. We hebben hierin natuurlijk buurten als variabelen die we vervolgens plotten op een kaart. Het is dus geen wonder dat buurten hier en daar verschillende kleuren krijgen.
+
+```{r}
+# Kleuren nationale politie
+np1 = rgb(0/255, 67/255, 128/255, 1)            # Donkerblauw
+np2 = rgb(190/255, 158/255, 85/255, 1)          # Goud
+np3 = rgb(132/255, 165/255, 198/255, 1)         # Lichtblauw
+np4 = rgb(245/255, 235/255, 214/255, 1)         # Lichtgoud
+np5 = rgb(0/255, 109/255, 220/255, 1)           # Felblauw
+
+kleuren_np = c(np1, np2, np3, np4, np5)
+
+# Op basis van de dummyset een clusteranalyse doen:
+
+km5 <- cbind(cluster = kmeans(diefstal_dummy[,-1], 5)$cluster, 
+      diefstal_dummy)
+
+# Kleuren definieren voor een plotje
+pal <- colorFactor(
+  palette = kleuren_np,
+  domain = km5$cluster
+)
+
+# Een plot van de clusters
+diefstallen %>%
+  st_transform(4326) %>%
+  inner_join(km5) %>% 
+  #filter(cluster != 1) %>%
+  leaflet() %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addCircleMarkers(radius = 2, 
+                   color = ~pal(cluster), 
+                   fillOpacity = 0.5, 
+                   stroke = F)
+```
+
+
+
+
