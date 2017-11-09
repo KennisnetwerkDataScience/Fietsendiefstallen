@@ -22,6 +22,7 @@ Het gaat om de volgende datasets in de map [data](https://github.com/Kennisnetwe
 * Fietsenstallingen (bron: [VeiligStallen.nl](https://www.veiligstallen.nl/groningen/stallingen). Dit is geen shape, maar een csv-bestand.
 * Fietsendiefstallen verrijkt met buurtnummer, aangemaakt door Erik Duisterwinkel. De verrijkte dataset wordt gebruikt in timeanalysis.py, een voorbeeldscript dat je terug kunt vinden in de python map.
 * John Meijer heeft de verschillende waarden in de kolom `Object` in het fietsdiefstallenbestand teruggebracht tot 12 door waarden zoveel mogelijk te clusteren. Het resultaat staat in het Excel-bestand Diefstallen_met_geclusterde_object_waarden.xlsx.
+* Johan Santing heeft per diefstal de afstand tot geografische objecten berekend. Het resultaat is beschikbaar in een Excel- en shape-bestand (diefstallen_met_afstanden.xlsx en diefstallen_met_afstanden.zip).
 
    
 Het bestand met fietsendiefstallen is een Excel-bestand. Het wordt -net als alle overige bronbestanden- ook als gezipt shape-bestand in EPSG:4326 (WGS84) beschikbaar gesteld.
