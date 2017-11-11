@@ -6,6 +6,9 @@ import logging
 
 import pandas as pd
 
+
+from datetime import datetime, timedelta
+
 from rdwgs_converter import RDWGSConverter
 
 import numpy as np
@@ -39,11 +42,12 @@ def read_tsv(path):
     return df
 
 
-def plot(df):
-    #np.random.seed(0)
-    #x = np.random.uniform(0.0,10.0,15)
-    #y = np.random.uniform(0.0,10.0,15)
+def to_date(datestr):
+    return datetime.strptime(datestr, '%Y-%m-%dT%H:%M:%SZ')
 
+
+def sub_plot(df, title=None, save_image=None):
+    plt.clf()
     datafile = 'osm_map.png'
     img = imread(datafile)
     #plt.scatter([],[],zorder=1)
@@ -59,11 +63,44 @@ def plot(df):
     kernel = stats.gaussian_kde(values)
     Z = np.reshape(kernel(positions).T, X.shape)
 
+    if not title is None:
+        plt.title(title)
+
     plt.imshow(img, zorder=0, extent=[min_x, max_x, min_y, max_y])
-    plt.imshow(np.rot90(Z), cmap=plt.cm.gist_earth_r, extent=[min_x, max_x, min_y, max_y], alpha=0.5)
+    plt.imshow(np.rot90(Z), cmap=plt.cm.Reds, extent=[min_x, max_x, min_y, max_y], alpha=0.5)
     #plt.imshow(img, zorder=0)
     #plt.imshow(img, zorder=0)
-    plt.show()
+    if save_image is None:
+        plt.show()
+    else:
+        plt.savefig(save_image)
+
+
+
+def plot(df):
+    start_dt    = to_date("2013-01-01T00:00:00Z")
+    end_dt      = to_date("2013-04-01T00:00:00Z")
+    interval    = timedelta(days=28)
+    cur_dt      = start_dt
+    
+    count = 0
+    while cur_dt < end_dt:
+        cur_dt_str = cur_dt.strftime("%Y-%m-%dT%H:%M:%S")
+        cur_dt_end_str = (cur_dt + interval).strftime("%Y-%m-%dT%H:%M:%S")
+        range_str = "%s - %s" % (cur_dt_str, cur_dt_end_str)
+        logging.info("Range: %s" % range_str)
+
+        subdf = df[df['begin_pleegdatumtijd'] > cur_dt_str]
+        subdf = subdf[df['begin_pleegdatumtijd'] < cur_dt_end_str]
+
+        sub_plot(subdf, title=range_str, save_image="output/%03d.png" % count)
+
+        cur_dt += interval
+        count += 1
+
+
+    #for k, s in df.iterrows():
+    #    print(s["begin_pleegdatumtijd"])
 
 
 def main(args=None):
