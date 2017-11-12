@@ -16,6 +16,7 @@ library(sf)
 library(tidyverse)
 library(leaflet)
 library(lubridate)
+library(readxl)
 
 download_file <- function(url, zipped = TRUE) {
   wd <- getwd()
@@ -63,6 +64,16 @@ diefstallen <- download_file('https://github.com/KennisnetwerkDataScience/Fietse
                st_join(wijken, left = TRUE) %>%
                st_join(buurten, left = TRUE) %>%
                rename(wijk = naam.x, buurt = naam.y)
+```
+
+
+# Categorieën ojbecten
+
+Er zijn erg veel objectcategorieën. Deze zijn teruggebracht tot 10 (door John)
+
+```{r}
+objecten <- read_excel('data/Diefstallen_met_geclusterde_object_waarden.xlsx') %>%
+  select(id = `Incident Identificatie`, Object_2)
 ```
 
 
@@ -121,6 +132,7 @@ Maar eerst moeten we nagaan hoe we een dag definiëren (voor de gevallen waarvan
 
 ```{r, message=FALSE, warning=FALSE}
 diefstal_dummy <- diefstallen %>% 
+  left_join(objecten) %>%
   mutate(begin_plus = begin + days(1), 
          zelfde_dag  = eind %within% interval(begin, begin_plus), 
          begin_wdag = ifelse(hour(begin) < 6,
@@ -134,8 +146,11 @@ diefstal_dummy <- diefstallen %>%
                      label = T, 
                      abbr = F)) %>% 
   filter(zelfde_dag) %>% 
-  select(id, buurt, begin_wdag) %>%
-  dummy()
+  select(id, buurt, begin_wdag, Object_2) %>%
+  dummy() 
+
+# naar csv schrijven
+write.csv(diefstal_dummy, 'data/dummyvariabelen.csv', row.names = F)
 ```
 
 Op deze manier kunnen er clusteranalyses gedaan worden. Hieronder een simpel voorbeeld mbv `kmeans` en het beperkte aantal dummyvariabelen dat nu aanwezig is, zegt nog niet zoveel dus. Wat onduidelijke kleuren, maar wel in de huisstijl van de Nationale Politie.:) Het grooste cluster is weggelaten voor de overzichtelijkheid. We hebben hierin natuurlijk buurten als variabelen die we vervolgens plotten op een kaart. Het is dus geen wonder dat buurten hier en daar verschillende kleuren krijgen.
