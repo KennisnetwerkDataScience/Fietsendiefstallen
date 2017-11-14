@@ -116,7 +116,20 @@ def main(args=None):
     if not args.write_file is None:
         df.to_csv(args.write_file, sep="\t")
 
-    sub_plot(df)
+    #df = df[df['begin_pleegdatumtijd'].hour > 0]
+    for i in range(24):
+        subdf = df[pd.DatetimeIndex(df['begin_pleegdatumtijd']).hour == i]
+        #subdf = subdf[pd.DatetimeIndex(subdf['begin_pleegdatumtijd']).hour < (i + 1)]
+        print("LEN: %d" % len(subdf))
+        if len(subdf) > 0:
+            sub_plot(subdf, title="hour: %d" % i)
+
+    #df = df[df['begin_pleegdatumtijd'] > "T12:00:00"]
+    #df = df[df['begin_pleegdatumtijd'].between_time('20:00', '22:00')]
+    #df = df.set_index('begin_pleegdatumtijd')
+    #df = df['begin_pleegdatumtijd'].between_time('20:00', '22:00')
+    #df = df['begin_pleegdatumtijd'].between_time('20:00', '22:00')
+    print(len(df))
     #plot(df)
 
 
