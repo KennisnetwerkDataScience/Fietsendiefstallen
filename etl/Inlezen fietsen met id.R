@@ -13,3 +13,5 @@ fietsen <- read_excel('data/Fietsen incident id.xlsx') %>%
 
 fietsen %>%
   write.csv('data/fietsen_id.csv')
+
+
