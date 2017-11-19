@@ -19,11 +19,11 @@ import matplotlib.cbook as cbook
 
 conv = RDWGSConverter()
 
-min_lat = 53.2068
-max_lon = 6.5930
+min_lat = 53.1781
+min_lon = 6.4952
+max_lat = 53.2556
+max_lon = 6.6363
 
-max_lat = 53.2276
-min_lon = 6.5417
 
 min_x, min_y = conv.fromWgsToRd((min_lat, min_lon))
 max_x, max_y = conv.fromWgsToRd((max_lat, max_lon))
@@ -47,34 +47,41 @@ def to_date(datestr):
     return datetime.strptime(datestr, '%Y-%m-%dT%H:%M:%SZ')
 
 
-def sub_plot(df, title=None, save_image=None):
+def sub_plot(df, title=None, save_image=None, pre_Z=None):
     plt.clf()
 
     #plt.figure(figsize=(1920 / 200.0, 1080 / 200.0))
 
-    img = imread('osm_map.png')
-    plt.scatter(df["x"],df["y"],zorder=1, c='r', s=1)
+    img = imread('osm_map_big2.png')
+    plt.scatter(df["x"],df["y"],zorder=1, c='r', s=0.5)
 
     axes = plt.gca()
     axes.set_ylim([min_y,max_y])
     axes.set_xlim([min_x,max_x])
 
-    X, Y = np.mgrid[min_x:max_x:100j, min_y:max_y:100j]
+    res = 50j
+    X, Y = np.mgrid[min_x:max_x:res, min_y:max_y:res]
     positions = np.vstack([X.ravel(), Y.ravel()])
     values = np.vstack([df["x"], df["y"]])
     #kernel = stats.gaussian_kde(values, bw_method=0.15)
     kernel = stats.gaussian_kde(values)
-    Z = np.reshape(kernel(positions).T, X.shape)
+    orig_Z = np.reshape(kernel(positions).T, X.shape)
+
+    if not pre_Z is None:
+        Z = orig_Z - pre_Z
+    else:
+        Z = orig_Z
 
     if not title is None:
         plt.title(title)
 
     plt.imshow(img, zorder=0, extent=[min_x, max_x, min_y, max_y])
-    plt.imshow(np.rot90(Z), cmap=plt.cm.Reds, extent=[min_x, max_x, min_y, max_y], alpha=0.70)
+    plt.imshow(np.rot90(Z), cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
     if save_image is None:
         plt.show()
     else:
         plt.savefig(save_image)
+    return orig_Z
 
 
 
@@ -86,6 +93,7 @@ def plot(df):
     cur_dt         = start_dt
     
     count = 0
+    pre_Z = None
     while cur_dt < end_dt:
         cur_dt_str = cur_dt.strftime("%Y-%m-%dT%H:%M:%S")
         cur_dt_end_str = (cur_dt + window).strftime("%Y-%m-%dT%H:%M:%S")
@@ -95,14 +103,12 @@ def plot(df):
         subdf = df[df['begin_pleegdatumtijd'] > cur_dt_str]
         subdf = subdf[df['begin_pleegdatumtijd'] < cur_dt_end_str]
 
-        sub_plot(subdf, title=range_str, save_image="output/%04d.png" % count)
+        Z = sub_plot(subdf, title=range_str, save_image="output/%04d.png" % count, pre_Z=pre_Z)
+        if pre_Z is None:
+            pre_Z = Z
 
         cur_dt += window_overlap
         count += 1
-
-
-    #for k, s in df.iterrows():
-    #    print(s["begin_pleegdatumtijd"])
 
 
 def main(args=None):
@@ -116,21 +122,7 @@ def main(args=None):
     if not args.write_file is None:
         df.to_csv(args.write_file, sep="\t")
 
-    #df = df[df['begin_pleegdatumtijd'].hour > 0]
-    for i in range(24):
-        subdf = df[pd.DatetimeIndex(df['begin_pleegdatumtijd']).hour == i]
-        #subdf = subdf[pd.DatetimeIndex(subdf['begin_pleegdatumtijd']).hour < (i + 1)]
-        print("LEN: %d" % len(subdf))
-        if len(subdf) > 0:
-            sub_plot(subdf, title="hour: %d" % i)
-
-    #df = df[df['begin_pleegdatumtijd'] > "T12:00:00"]
-    #df = df[df['begin_pleegdatumtijd'].between_time('20:00', '22:00')]
-    #df = df.set_index('begin_pleegdatumtijd')
-    #df = df['begin_pleegdatumtijd'].between_time('20:00', '22:00')
-    #df = df['begin_pleegdatumtijd'].between_time('20:00', '22:00')
-    print(len(df))
-    #plot(df)
+    plot(df)
 
 
 if __name__ == "__main__":
