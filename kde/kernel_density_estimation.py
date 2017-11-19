@@ -47,7 +47,8 @@ def to_date(datestr):
     return datetime.strptime(datestr, '%Y-%m-%dT%H:%M:%SZ')
 
 
-def sub_plot(df, title=None, save_image=None, pre_Z=None):
+def plot_kde(df, title=None, save_image=None, pre_Z=None, only_calc=False):
+    """ Calculates the Kernel Density Estimation and plots it result for the given dataframe. """ 
     plt.clf()
 
     #plt.figure(figsize=(1920 / 200.0, 1080 / 200.0))
@@ -67,53 +68,73 @@ def sub_plot(df, title=None, save_image=None, pre_Z=None):
     kernel = stats.gaussian_kde(values)
     orig_Z = np.reshape(kernel(positions).T, X.shape)
 
-    if not pre_Z is None:
-        Z = orig_Z - pre_Z
-    else:
-        Z = orig_Z
+    Z = orig_Z if pre_Z is None else orig_Z - pre_Z
 
     if not title is None:
         plt.title(title)
 
-    plt.imshow(img, zorder=0, extent=[min_x, max_x, min_y, max_y])
-    plt.imshow(np.rot90(Z), cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
-    if save_image is None:
-        plt.show()
-    else:
-        plt.savefig(save_image)
+    if not only_calc:
+        plt.imshow(img, zorder=0, extent=[min_x, max_x, min_y, max_y])
+        plt.imshow(np.rot90(Z), cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
+        if save_image is None:
+            plt.show()
+        else:
+            plt.savefig(save_image)
     return orig_Z
 
 
 
-def plot(df):
+def sliding_window_plot(df, window_size=100, method="normal"):
+    """ Plots and saves all results of the KDE using a sliding window. 
+    window_size -- The size of the window to use in days.
+    method      -- The method being used, can be any of:
+                normal:      Just slides the window in time.
+                diff:        The difference of the current window with the inital window at the start.
+                diff_double: Similar to diff but in this case the initial window slides with the preceding window.
+    """
+    assert method in ["normal", "diff", "diff_double"]
     start_dt       = to_date("2013-01-01T00:00:00Z")
     end_dt         = to_date("2017-09-01T00:00:00Z")
-    window         = timedelta(days=100)
+    window         = timedelta(days=window_size)
     window_overlap = timedelta(days=1)
     cur_dt         = start_dt
     
     count = 0
-    pre_Z = None
+    initial_Z = None
     while cur_dt < end_dt:
-        cur_dt_str = cur_dt.strftime("%Y-%m-%dT%H:%M:%S")
-        cur_dt_end_str = (cur_dt + window).strftime("%Y-%m-%dT%H:%M:%S")
+        cur_dt_str              =                  cur_dt.strftime("%Y-%m-%dT%H:%M:%S")
+        cur_dt_end_str          =       (cur_dt + window).strftime("%Y-%m-%dT%H:%M:%S")
+        cur_dt_double_end_str   = (cur_dt + (2 * window)).strftime("%Y-%m-%dT%H:%M:%S")
         range_str = "%s - %s" % (cur_dt_str, cur_dt_end_str)
         logging.info("Range: %s" % range_str)
 
-        subdf = df[df['begin_pleegdatumtijd'] > cur_dt_str]
+        subdf = df[df['begin_pleegdatumtijd'] >= cur_dt_str]
         subdf = subdf[df['begin_pleegdatumtijd'] < cur_dt_end_str]
 
-        Z = sub_plot(subdf, title=range_str, save_image="output/%04d.png" % count, pre_Z=pre_Z)
-        if pre_Z is None:
-            pre_Z = Z
+        if method == "normal":
+            plot_kde(subdf, title=range_str, save_image="output/%04d.png" % count)
+        elif method == "diff":
+            Z = plot_kde(subdf, title=range_str, save_image="output/%04d.png" % count, pre_Z=initial_Z)
+            if initial_Z is None:
+                initial_Z = Z
+        elif method == "diff_double":
+            if cur_dt + window > end_dt:
+                break
+            Z = plot_kde(subdf, only_calc=True)
+            if not Z is None:
+                subdf = df[df['begin_pleegdatumtijd'] >= cur_dt_end_str]
+                subdf = subdf[df['begin_pleegdatumtijd'] < cur_dt_double_end_str]
+                plot_kde(subdf, title=range_str, save_image="output/%04d.png" % count, pre_Z=Z)
 
         cur_dt += window_overlap
         count += 1
 
 
 def main(args=None):
-    parser = argparse.ArgumentParser(description='Applies and visualizes the kernel density estimation applied to the bike thefts.')
+    parser = argparse.ArgumentParser(description='Applies and visualizes the kernel density estimation applied to the bike thefts using a sliding window.')
     parser.add_argument('file', help='Path the the bike theft file in tsv format.', type=str)
+    parser.add_argument('--method', type=str, default="normal", help='The method to use for the sliding window.')
+    parser.add_argument('--window_size', type=int, default=100, help='The window size used for visualization in days.')
     parser.add_argument('--write_file', type=str, default=None, help='Writes the specified file after reading (and possibly conversion).')
     args = parser.parse_args(args)
 
@@ -122,7 +143,7 @@ def main(args=None):
     if not args.write_file is None:
         df.to_csv(args.write_file, sep="\t")
 
-    plot(df)
+    sliding_window_plot(df, args.window_size, args.method)
 
 
 if __name__ == "__main__":
