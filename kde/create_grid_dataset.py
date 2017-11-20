@@ -2,6 +2,9 @@
 
 import argparse
 import logging
+import glob
+
+import os
 
 import pandas as pd
 
@@ -51,7 +54,7 @@ class GridFeatureExtractor():
     def __init__(self, grid):
         self._grid = grid
         self._cel_max = grid * grid - 1
-        self._grid_features = {c:{"count":0, "lights":0} for c in range(grid * grid)}
+        self._grid_features = {c:{"count":0} for c in range(grid * grid)}
         self._box_width = (max_x - min_x) / self._grid
         self._box_height = (max_y - min_y) / self._grid
         self._conv = RDWGSConverter()
@@ -68,14 +71,46 @@ class GridFeatureExtractor():
             cel = self.to_cel_index(r["x"], r["y"])
             self._grid_features[cel]["count"] += 1
 
-    def add_lights(self, df):
-        logging.info("Adding %d lights." % len(df))
+    def add_xy_count(self, df, name):
+        logging.info("Adding %d of type %s." % (len(df), name))
+        #Init:
+        for c, fs in self._grid_features.items():
+            fs[name] = 0
+        #Count:
         for k, r in df.iterrows():
             x, y = self._conv.fromWgsToRd((r["y"], r["x"]))
             cel = self.to_cel_index(x, y)
             #Add if cel is not outside grid:
             if not cel is None:
-                self._grid_features[cel]["lights"] += 1
+                self._grid_features[cel][name] += 1
+
+    def add_csv(self, csv_path):
+        df = pd.read_csv(csv_path, sep=",", encoding="ISO-8859-1")
+        columns = df.columns.values
+        logging.debug("Columns found in %s: %s" % (csv_path, str(columns)))
+        self.add_xy_count(df, os.path.basename(csv_path).split(".")[-2])
+
+    def to_csv(self):
+        #TODO: Use pandas for this?
+        csv = ""
+        cols = None
+        for i in range(self._grid * self._grid):
+            fs = self._grid_features[i]
+            if cols is None:
+                cols = list(fs.keys())
+                cols.sort()
+                cols.remove("count")
+                csv += "cel,count"
+                for c in cols:
+                    csv += ",%s" % c
+                csv += "\n"
+            csv += "%d,%d" % (i, fs["count"])
+            for c in cols:
+                csv += ",%d" % fs[c]
+            csv += "\n"
+        return csv
+            
+
 
     def get_features(self):
         return self._grid_features
@@ -97,7 +132,7 @@ def assign_grid(df, grid):
 def main(args=None):
     parser = argparse.ArgumentParser(description='Create a dataset suitable for regression proving the csvs.')
     parser.add_argument('file', type=str, help='Path to the bike theft file in tsv format.')
-    parser.add_argument('--lights', type=str, default=None, help='If set, uses the specified file to append light information to the dataset.')
+    parser.add_argument('--csvs', type=str, default=None, help='Path with csvs to calculate the features for.')
     parser.add_argument('--grid', type=int, default=30, help='If set uses the specified value as the widht/height of the grid to assign the rows to.')
     args = parser.parse_args(args)
 
@@ -105,13 +140,11 @@ def main(args=None):
 
     e = GridFeatureExtractor(args.grid)
     e.set_y(df)
-    if not args.lights is None:
-        lights_df = pd.read_csv(args.lights, sep=",", encoding="ISO-8859-1")
-        columns = lights_df.columns.values
-        logging.debug("Light columns found: %s" % str(columns))
-        e.add_lights(lights_df)
-    print(e.get_features())
 
+    for csv in glob.glob("%s/*.csv" % args.csvs):
+        e.add_csv(csv)
+    print(e.to_csv())
+       
 
 if __name__ == "__main__":
     logging.getLogger().setLevel(logging.DEBUG)
