@@ -18,18 +18,12 @@ import numpy as np
 
 conv = RDWGSConverter()
 
-small = False
-if small:
-    min_lat = 53.2068
-    max_lon = 6.5930
-    max_lat = 53.2276
-    min_lon = 6.5417
-else:
-    min_lat = 53.1781
-    min_lon = 6.4952
-    max_lat = 53.2556
-    max_lon = 6.6363
-
+#Modify depending on map and area used:
+#TODO: Move somewhere to a common place.
+min_lat = 53.1781
+min_lon = 6.4952
+max_lat = 53.2556
+max_lon = 6.6363
     
 min_x, min_y = conv.fromWgsToRd((min_lat, min_lon))
 max_x, max_y = conv.fromWgsToRd((max_lat, max_lon))
@@ -169,6 +163,7 @@ def assign_grid(df, grid):
 def main(args=None):
     parser = argparse.ArgumentParser(description='Create a dataset suitable for regression proving the csvs.')
     parser.add_argument('file', type=str, help='Path to the bike theft file in tsv format.')
+    parser.add_argument('output', type=str, help='Path to output file containing the dataset.')
     parser.add_argument('--csvs', type=str, default=None, help='Path with csvs to calculate the features for.')
     parser.add_argument('--grid', type=int, default=30, help='If set uses the specified value as the widht/height of the grid to assign the rows to.')
     args = parser.parse_args(args)
@@ -182,7 +177,7 @@ def main(args=None):
         e.add_csv(csv)
     e.calc_kde_features()
     csv = e.to_csv()
-    with open("dataset.csv", "w") as f:
+    with open(args.output, "w") as f:
         f.write(csv)
        
 

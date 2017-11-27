@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#used to create a simple predictor of the amount of thefts in a given period.
+#Run script with -h to get more info.
 
 from sklearn.neural_network import MLPRegressor
 import matplotlib.pyplot as plt
@@ -27,18 +29,12 @@ from sklearn.svm import SVR
 
 conv = RDWGSConverter()
 
-small = False
-if small:
-    min_lat = 53.2068
-    max_lon = 6.5930
-    max_lat = 53.2276
-    min_lon = 6.5417
-else:
-    min_lat = 53.1781
-    min_lon = 6.4952
-    max_lat = 53.2556
-    max_lon = 6.6363
-
+#Modify depending on map and area used:
+#TODO: Move somewhere to a common place.
+min_lat = 53.1781
+min_lon = 6.4952
+max_lat = 53.2556
+max_lon = 6.6363
     
 min_x, min_y = conv.fromWgsToRd((min_lat, min_lon))
 max_x, max_y = conv.fromWgsToRd((max_lat, max_lon))
@@ -75,13 +71,13 @@ def main(args=None):
             X_test.append(fv)
 
     #Train:
-    #predictor = SVR(kernel='rbf', C=1e3, gamma=0.1).fit(X_train, y_train)
-    predictor = MLPRegressor((100,200,100)).fit(X_train, y_train)
+    predictor = SVR(kernel='rbf', C=1e3, gamma=0.1).fit(X_train, y_train)
+    #predictor = MLPRegressor((100,200,100)).fit(X_train, y_train)
 
     y_train_predicted = predictor.predict(X_train)
     y_test_predicted = predictor.predict(X_test)
 
-    img = imread('osm_map_big2.png')
+    img = imread('osm_map.png')
 
     axes = plt.gca()
     axes.set_ylim([min_y,max_y])
@@ -104,8 +100,6 @@ def main(args=None):
                     v = max_v
                 row.append(v)
         R.append(row)
-
-    print(R)
 
     plt.imshow(img, zorder=0, extent=[min_x, max_x, min_y, max_y])
     plt.imshow(R, cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)

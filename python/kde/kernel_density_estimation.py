@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#File used to calculate the Kernel Density Estimation of the city.
+#Run script with -h to get more info.
 
 from scipy import stats
 import argparse
@@ -19,6 +21,8 @@ import matplotlib.cbook as cbook
 
 conv = RDWGSConverter()
 
+#Modify depending on map and area used:
+#TODO: Move somewhere to a common place.
 min_lat = 53.1781
 min_lon = 6.4952
 max_lat = 53.2556
@@ -53,7 +57,7 @@ def plot_kde(df, title=None, save_image=None, pre_Z=None, only_calc=False):
 
     #plt.figure(figsize=(1920 / 200.0, 1080 / 200.0))
 
-    img = imread('osm_map_big2.png')
+    img = imread('osm_map.png')
     plt.scatter(df["x"],df["y"],zorder=1, c='r', s=0.5)
 
     axes = plt.gca()
