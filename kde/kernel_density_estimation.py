@@ -69,6 +69,7 @@ def plot_kde(df, title=None, save_image=None, pre_Z=None, only_calc=False):
     orig_Z = np.reshape(kernel(positions).T, X.shape)
 
     Z = orig_Z if pre_Z is None else orig_Z - pre_Z
+    print(Z)
 
     if not title is None:
         plt.title(title)

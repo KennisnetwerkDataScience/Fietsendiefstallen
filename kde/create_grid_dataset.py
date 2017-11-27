@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from scipy import stats
 import argparse
 import logging
 import glob
@@ -58,6 +59,7 @@ class GridFeatureExtractor():
         self._box_width = (max_x - min_x) / self._grid
         self._box_height = (max_y - min_y) / self._grid
         self._conv = RDWGSConverter()
+        self._kde_kernels = {}
 
     def to_cel_index(self, x, y):
         """ Returns the index of the grid cel providing the x and y coordinates. """
@@ -65,6 +67,12 @@ class GridFeatureExtractor():
         y_pos = int((y - min_y) / self._box_height)
         index = y_pos * self._grid + x_pos
         return None if index > self._cel_max else index
+
+    def to_pos(self, index):
+        """ Returns the center point of the specified cel in RD coordinates. """
+        x = min_x + ((index % self._grid) * self._box_width) + (self._box_width / 2)
+        y = min_y + (int(index / self._grid) * self._box_height) + (self._box_height / 2)
+        return (x, y)
 
     def set_y(self, df):
         for k, r in df.iterrows():
@@ -84,11 +92,42 @@ class GridFeatureExtractor():
             if not cel is None:
                 self._grid_features[cel][name] += 1
 
+
+    def add_kde_kernel(self, df, name, resolution=50j):
+        #First convert to rd coordinates:
+        conv = RDWGSConverter()
+        def convert(x, y):
+            return conv.fromWgsToRd((y, x))
+        df["rd_x"], df["rd_y"] = convert(df["x"], df["y"])
+        values = np.vstack([df["rd_x"], df["rd_y"]])
+        self._kde_kernels[name] = stats.gaussian_kde(values)
+        #self._kde_kernels[name] = stats.gaussian_kde(values, bw_method=10.0)
+        #self._kde_kernels[name] = stats.gaussian_kde(values, bw_method=5.0)
+
+
+    def calc_kde_features(self):
+        #TODO: Inefficient as hell, improve:
+        maxes = {c:None for c in self._kde_kernels.keys()}
+        for i in range(self._grid * self._grid):
+            (x, y) = self.to_pos(i)
+            for c in self._kde_kernels.keys():
+                v = self._kde_kernels[c]([[x, y]])[0]
+                if maxes[c] is None or maxes[c] < v:
+                    maxes[c] = v
+                self._grid_features[i][c] = self._kde_kernels[c]([[x, y]])
+        #Normalize:
+        for i in range(self._grid * self._grid):
+            for c in self._kde_kernels.keys():
+                self._grid_features[i][c] /= maxes[c]
+
+
     def add_csv(self, csv_path):
         df = pd.read_csv(csv_path, sep=",", encoding="ISO-8859-1")
         columns = df.columns.values
         logging.debug("Columns found in %s: %s" % (csv_path, str(columns)))
-        self.add_xy_count(df, os.path.basename(csv_path).split(".")[-2])
+        name = os.path.basename(csv_path).split(".")[-2]
+        #self.add_xy_count(df, name)
+        self.add_kde_kernel(df, name)
 
     def to_csv(self):
         #TODO: Use pandas for this?
@@ -106,11 +145,9 @@ class GridFeatureExtractor():
                 csv += "\n"
             csv += "%d,%d" % (i, fs["count"])
             for c in cols:
-                csv += ",%d" % fs[c]
+                csv += ",%.10f" % fs[c]
             csv += "\n"
         return csv
-            
-
 
     def get_features(self):
         return self._grid_features
@@ -143,7 +180,10 @@ def main(args=None):
 
     for csv in glob.glob("%s/*.csv" % args.csvs):
         e.add_csv(csv)
-    print(e.to_csv())
+    e.calc_kde_features()
+    csv = e.to_csv()
+    with open("dataset.csv", "w") as f:
+        f.write(csv)
        
 
 if __name__ == "__main__":
