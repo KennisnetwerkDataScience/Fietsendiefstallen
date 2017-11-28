@@ -47,23 +47,18 @@ def read_dataset(path):
     return df
 
 
-def main(args=None):
-    parser = argparse.ArgumentParser(description='Create a bike theft predictor.')
-    parser.add_argument('file', type=str, help='Path to dataset.')
-    args = parser.parse_args(args)
-
-    df = read_dataset(args.file)
-    columns = df.columns.values
-    logging.debug("Columns found: %s" % (str(columns)))
+def create_and_test_predictor(df, train_percentage=0.5, grid=30):
+    test_row_offset = int(grid * train_percentage)
 
     #Convert df to dataset:
+    #TODO: Improve using more pandas/numpy:
     y_train = []; y_test = []
     X_train = []; X_test = []
     l = len(df)
     for i, (k, r) in enumerate(df.iterrows()):
         fv = [r['bushaltes'], r['cameratoezicht_vlak'], r['coffeeshops'], r['horeca'], \
              r['onth_verg_drank_en_horeca'], r['openbareverlichting'], r['slaapopvang_en_methadon'], r['verblijfsobjecten']]
-        if i < (l / 2):
+        if (i < int(l * train_percentage)):
             y_train.append(r["count"])
             X_train.append(fv)
         else:
@@ -71,8 +66,8 @@ def main(args=None):
             X_test.append(fv)
 
     #Train:
-    predictor = SVR(kernel='rbf', C=1e3, gamma=0.1).fit(X_train, y_train)
-    #predictor = MLPRegressor((100,200,100)).fit(X_train, y_train)
+    #predictor = SVR(kernel='rbf', C=1e3, gamma=0.1).fit(X_train, y_train)
+    predictor = MLPRegressor((100,200,100)).fit(X_train, y_train)
 
     y_train_predicted = predictor.predict(X_train)
     y_test_predicted = predictor.predict(X_test)
@@ -85,17 +80,17 @@ def main(args=None):
 
     max_v = 100
     R = []
-    for r in range(30):
+    for r in range(grid):
         row = []
-        if r * 30 < len(y_train):
-            for c in range(30):
-                v = y_train_predicted[r * 30 + c]
+        if r * grid < len(y_train):
+            for c in range(grid):
+                v = y_train[r * grid + c]
                 if v > max_v:
                     v = max_v
                 row.append(v)
         else:
-            for c in range(30):
-                v = y_test_predicted[(r - 15) * 30 + c]
+            for c in range(grid):
+                v = y_test_predicted[(r - test_row_offset) * grid + c]
                 if v > max_v:
                     v = max_v
                 row.append(v)
@@ -105,7 +100,19 @@ def main(args=None):
     plt.imshow(R, cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
     plt.show()
 
-  
+
+def main(args=None):
+    parser = argparse.ArgumentParser(description='Create a bike theft predictor.')
+    parser.add_argument('file', type=str, help='Path to dataset.')
+    parser.add_argument('-tp', dest="train_percentage", type=float, default=0.5, help='Percentage to use for training.')
+    args = parser.parse_args(args)
+
+    df = read_dataset(args.file)
+    columns = df.columns.values
+    logging.debug("Columns found: %s" % (str(columns)))
+
+    create_and_test_predictor(df, train_percentage=args.train_percentage)
+
 
 if __name__ == "__main__":
     logging.getLogger().setLevel(logging.DEBUG)
