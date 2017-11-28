@@ -7,6 +7,10 @@ Use the `kernen_density_estimation.py` script to calculate the KDE of thefts of 
 
 Run the script with the `-h` option to see more options.
 
+Example result:
+
+<img src="output/kde_groningen_big.png" width="50%" />
+
 ## Create Movies
 
 Using a different `--method` allows to create a movie by calculating the KDE over several window intervals.
