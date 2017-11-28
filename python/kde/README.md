@@ -1,10 +1,11 @@
 
 All code in this directory is released under the AGPL-3.0 unless stated/applicable otherwise: https://www.gnu.org/licenses/agpl-3.0.en.html
+
 Contact: https://github.com/r-snijders
 
 # Kernel Density Estimation (KDE)
 
-Use the `kernen_density_estimation.py` script to calculate the KDE of thefts of Groningen over the complete dataset as follows:
+Use the `kernel_density_estimation.py` script to calculate the KDE of thefts of Groningen over the complete dataset as follows:
 
 `./kernel_density_estimation.py --method full ../../data/fietsendiefstallen.tsv`
 
