@@ -69,7 +69,7 @@ def create_and_test_predictor(df, train_percentage=0.5, grid=30):
     #predictor = SVR(kernel='rbf', C=1e3, gamma=0.1).fit(X_train, y_train)
     predictor = MLPRegressor((100,200,100)).fit(X_train, y_train)
 
-    y_train_predicted = predictor.predict(X_train)
+    #y_train_predicted = predictor.predict(X_train)
     y_test_predicted = predictor.predict(X_test)
 
     img = imread('osm_map.png')
@@ -78,7 +78,7 @@ def create_and_test_predictor(df, train_percentage=0.5, grid=30):
     axes.set_ylim([min_y,max_y])
     axes.set_xlim([min_x,max_x])
 
-    max_v = 100
+    max_v = 50
     R = []
     for r in range(grid):
         row = []
@@ -97,7 +97,9 @@ def create_and_test_predictor(df, train_percentage=0.5, grid=30):
         R.append(row)
 
     plt.imshow(img, zorder=0, extent=[min_x, max_x, min_y, max_y])
-    plt.imshow(R, cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
+    #plt.imshow(np.rot90(R, k=4), cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
+    #plt.imshow(R, cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
+    plt.imshow(np.flipud(R), cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
     plt.show()
 
 

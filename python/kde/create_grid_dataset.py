@@ -87,7 +87,7 @@ class GridFeatureExtractor():
                 self._grid_features[cel][name] += 1
 
 
-    def add_kde_kernel(self, df, name, resolution=50j):
+    def add_kde_kernel(self, df, name):
         #First convert to rd coordinates:
         conv = RDWGSConverter()
         def convert(x, y):
@@ -112,7 +112,8 @@ class GridFeatureExtractor():
         #Normalize:
         for i in range(self._grid * self._grid):
             for c in self._kde_kernels.keys():
-                self._grid_features[i][c] /= maxes[c]
+                if maxes[c] > 0:
+                    self._grid_features[i][c] /= maxes[c]
 
 
     def add_csv(self, csv_path):

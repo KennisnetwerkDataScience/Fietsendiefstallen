@@ -148,7 +148,10 @@ def main(args=None):
     if not args.write_file is None:
         df.to_csv(args.write_file, sep="\t")
 
-    sliding_window_plot(df, args.window_size, args.method)
+    if args.method == "full":
+        plot_kde(df, title="KDE of whole dataset.")
+    else:
+        sliding_window_plot(df, args.window_size, args.method)
 
 
 if __name__ == "__main__":
