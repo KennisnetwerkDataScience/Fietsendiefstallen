@@ -97,8 +97,6 @@ def create_and_test_predictor(df, train_percentage=0.5, grid=30):
         R.append(row)
 
     plt.imshow(img, zorder=0, extent=[min_x, max_x, min_y, max_y])
-    #plt.imshow(np.rot90(R, k=4), cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
-    #plt.imshow(R, cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
     plt.imshow(np.flipud(R), cmap=plt.cm.viridis, extent=[min_x, max_x, min_y, max_y], alpha=0.60)
     plt.show()
 

@@ -9,7 +9,7 @@ Run the script with the `-h` option to see more options.
 
 Example result:
 
-<img src="output/kde_groningen_big.png" width="50%" />
+<img src="output/kde_groningen_big.png" width="75%" />
 
 ## Create Movies
 
@@ -37,17 +37,13 @@ How it works:
 * For each cel in the grid, the density value of each of the calculated KDE's are calculated.
 * The result is a feature vector with the same length as the number of csvs specified in the directory. And for each feature vector the number of thefts found in the corresponding cel.
 
-An example of the grid used, is shown below:
-
-TODO
-
 NOTE: One can fine-tune the influence of each object using the `bw_method` option in the statement `stats.gaussian_kde(values, bw_method=10.0)` inside the code.
 
 # Training and Testing the Predictor
 
-A Multi Layer Perceptron Regressor (with three hidden layers with the following amount of neurons; 50, 100, 50) is used to train on the bottom half of the city in order to predict the number of bike thefts in five years for the upper half of the city:
+A Multi Layer Perceptron Regressor (with three hidden layers with the following amount of neurons; 100, 200, 100) is used to train on the bottom half of the city in order to predict the number of bike thefts in five years for the upper half of the city:
 
-TODO
+<img src="output/predictor_results.png" width="100%" />
 
 This result can be reproduced using the following command (use option `-h` for more options):
 
